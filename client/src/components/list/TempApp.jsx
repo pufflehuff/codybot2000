@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import List from './List.jsx';
+import List from './List';
 
 document.body.style.backgroundColor = '#36494E;';
 
