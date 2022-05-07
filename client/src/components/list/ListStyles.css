@@ -27,16 +27,16 @@
 
 /* Difficulty Mark */
 .Difficulty {
-  font-size: 16px;
+  font-size: 1.5em;
   cursor: pointer;
 }
-.Easy {
+.easy {
   color: green;
 }
-.Medium {
+.medium {
   color: orange;
 }
-.Hard {
+.hard {
   color: red;
 }
 
@@ -50,7 +50,7 @@
   justify-content: space-between;
 }
 
-.Listcontainer {
+.ListContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
