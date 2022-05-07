@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import List from './List';
-import ResponsiveAppBar from './Navbar';
+import List from './list/List';
+import ResponsiveAppBar from './list/Navbar';
 
 document.body.style.backgroundColor = '#36494E;';
 
