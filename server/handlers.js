@@ -1,9 +1,9 @@
-const Problems = require("../database/models/problems");
+const Problems = require('../database/models/problems');
 
 module.exports = {
-  problems: () => "you would normally put a db query here",
-  problem: () => "you would normally put a db query here",
-  comments: () => "you would normally put a db query here",
+  problems: () => 'you would normally put a db query here',
+  problem: () => 'you would normally put a db query here',
+  comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
     const newProblem = new Problems({
       name: body.name,
