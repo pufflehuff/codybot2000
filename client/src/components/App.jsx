@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import List from './list/List';
 import ResponsiveAppBar from './list/Navbar';
@@ -16,13 +16,15 @@ const Header = styled.div`
 `;
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
+
   return (
     <>
       <Header>
         <h2>Toy Problem List</h2>
       </Header>
-      <ResponsiveAppBar currentUser={currentUser}/>
+      {/* add current user as prop to responsive app bar */}
+      <ResponsiveAppBar />
       <List />
     </>
   );

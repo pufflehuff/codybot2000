@@ -14,16 +14,18 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // import Logo from '../../../img/Darwin.png';
 
-
-const ResponsiveAppBar = ({currentUser}) => {
+function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  let greeting;
-  if (currentUser === null) {
-    greeting = 'Welcome to Codybot2000!';
-  } else {
-    greeting = `Welcome ${currentUser}`;
-  }
+  // let greeting;
+  // use once current user gets passed in as prop
+  // if (currentUser === null) {
+  //   greeting = 'Welcome to Codybot2000!';
+  // } else {
+  //   greeting = `Welcome ${currentUser}`;
+  // }
+
+  const greeting = 'Welcome to Codybot2000!';
 
   const pages = ['Create a Problem'];
   const settings = ['Profile', 'Dashboard', 'Logout'];
@@ -44,7 +46,7 @@ const ResponsiveAppBar = ({currentUser}) => {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: '#597081', color: '#A9CEF4'}}>
+    <AppBar position="static" sx={{ backgroundColor: '#597081', color: '#A9CEF4' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <img src={logo} /> */}
@@ -149,5 +151,5 @@ const ResponsiveAppBar = ({currentUser}) => {
       </Container>
     </AppBar>
   );
-};
+}
 export default ResponsiveAppBar;
