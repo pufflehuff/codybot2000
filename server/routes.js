@@ -17,3 +17,9 @@ module.exports.comments = (res, req) => {
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
+
+module.exports.createProblem = (res, req) => {
+  handlers.createProblem(res, req)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
