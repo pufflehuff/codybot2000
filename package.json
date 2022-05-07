@@ -4,11 +4,12 @@
   "description": "A l33tcode media site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "client-dev": "npx webpack --watch",
     "server-dev": "npx nodemon --watch server server/index.js",
     "start": "node server/index.js",
-    "build": "npx webpack"
+    "build": "npx webpack",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "nodemon": "^2.0.16",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.9.2"
