@@ -44,7 +44,7 @@ const ResponsiveAppBar = ({currentUser}) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{backgroundColor: '#597081', color: '#A9CEF4'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <img src={logo} /> */}
