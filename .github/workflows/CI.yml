@@ -30,4 +30,6 @@ jobs:
     - name: Lint
       run: npx eslint . --ext .js,.jsx
 
-        
+    - name: Test
+      run: npx jest
+      
