@@ -1,4 +1,4 @@
-name: Build and Lint
+name: Build, Lint, and Test
 
 on:
   push:
@@ -32,4 +32,3 @@ jobs:
 
     - name: Test
       run: npx jest
-      
