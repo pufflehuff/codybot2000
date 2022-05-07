@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: Build and Lint
 
 on:
   push:
@@ -26,7 +26,8 @@ jobs:
       run: |
         npm install
         npx webpack
-        
+    
     - name: Lint
-      run: |
-        npx eslint client/src/** --ext .js/.jsx
+      run: npx eslint . --ext .js,.jsx
+
+        
