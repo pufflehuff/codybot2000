@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logo from '../../../img/Darwin.png';
+// import Logo from '../../../img/Darwin.png';
 
 
 const ResponsiveAppBar = ({currentUser}) => {
@@ -25,7 +25,7 @@ const ResponsiveAppBar = ({currentUser}) => {
     greeting = `Welcome ${currentUser}`;
   }
 
-  const pages = [greeting, 'Create a Problem'];
+  const pages = ['Create a Problem'];
   const settings = ['Profile', 'Dashboard', 'Logout'];
 
   const handleOpenNavMenu = (event) => {
@@ -47,7 +47,8 @@ const ResponsiveAppBar = ({currentUser}) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} />
+          {/* <img src={logo} /> */}
+          <div>{greeting}</div>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
