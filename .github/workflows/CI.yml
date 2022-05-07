@@ -1,4 +1,4 @@
-name: Build and Lint
+name: Build, Lint, and Test
 
 on:
   push:
@@ -30,4 +30,5 @@ jobs:
     - name: Lint
       run: npx eslint . --ext .js,.jsx
 
-        
+    - name: Test
+      run: npx jest
