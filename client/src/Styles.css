@@ -1,6 +1,53 @@
+/* Main Body */
 body {
   background-color: #2a383c;
   color: #eab464;
+  text-shadow: -.05em .05em #000;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
+}
+
+/* Main Button */
+button {
+
+	font-family: 'Courier';
+  font-size: 1.25rem;
+  background: linear-gradient(45deg, transparent 13%, #597081 13% 87%, transparent 87%);
+  border: 0;
+  color: #A9CEF4;
+  letter-spacing: 0.188rem;
+  outline: transparent;
+  position: relative;
+  cursor: pointer
+}
+
+
+
+
+
+/* Toy Problem List Stuff */
+.Comments {
+  padding-top: .5%;
+  padding-bottom: .5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.Tags {
+  background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
+  margin-right: .5rem;
+  border-radius: 1rem;
+  color: #2a383c;
+}
+
+.ToyProblemEntry {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: .1em solid #A9CEF4;
+  border-top: none;
+  padding: 1.5em 3em;
+  height: 15em;
+  width: 80%;
+  color: #EAB464;
 }
