@@ -49,3 +49,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Listcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
