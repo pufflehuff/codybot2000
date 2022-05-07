@@ -22,11 +22,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Build & Lint
       run: |
         npm install
         npx webpack
-        
-    - name: Lint
-      run: |
         npx eslint client/src/** --ext .js/.jsx
+
+        
