@@ -18,8 +18,8 @@ module.exports.comments = (res, req) => {
     .catch((err) => res.status(500).json(err));
 };
 
-module.exports.createProblem = (res, req) => {
-  handlers.createProblem(res, req)
+module.exports.createProblem = (req, res) => {
+  handlers.createProblem(req, res)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
