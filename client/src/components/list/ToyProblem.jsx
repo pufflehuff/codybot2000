@@ -51,7 +51,7 @@ const Comments = styled.button`
 `;
 
 export default function ToyProblem({ problem }) {
-  // eslint-disable-next-line object-curly-newline
+  // eslint-disable-next-line object-curly-newline, no-unused-vars
   const { name, prompt, tags, difficulty, upvotes, downvotes, rating, timestamp, author } = problem;
 
   return (
