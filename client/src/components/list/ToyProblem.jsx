@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Rating from './Rating.jsx';
+import Rating from './Rating';
 
 const Entry = styled.div`
   display: flex;
