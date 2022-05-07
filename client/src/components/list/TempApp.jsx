@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import List from './List';
+import ResponsiveAppBar from './Navbar';
 
 document.body.style.backgroundColor = '#36494E;';
 
@@ -16,11 +17,15 @@ const Header = styled.div`
 `;
 
 export default function TempApp() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+
   return (
     <>
       <Header>
         <h2>Toy Problem List</h2>
       </Header>
+      <ResponsiveAppBar currentUser={currentUser}/>
       <List />
     </>
   );
