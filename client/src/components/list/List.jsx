@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React/* , { useState, useEffect } */ from 'react';
 import styled from 'styled-components';
 import ToyProblem from './ToyProblem';
 
@@ -11,7 +11,7 @@ const ListContainer = styled.div`
   font-family: Arial, sans serif;
 `;
 
-export default function List(props) {
+export default function List() {
   // const [problems, setProblems] = useState([]);
 
   // const problems_api = '/problems';
