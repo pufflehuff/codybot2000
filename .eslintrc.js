@@ -36,7 +36,7 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
-          ['common', './client/src/components/common'],
+          ['Components', './client/src/components/'],
         ],
         extensions: ['.js', '.jsx'],
       },

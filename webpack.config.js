@@ -25,5 +25,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      Components: path.resolve(__dirname, 'client/src/components'),
+    },
   },
 };
