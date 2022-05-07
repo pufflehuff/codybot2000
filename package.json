@@ -4,11 +4,12 @@
   "description": "A l33tcode media site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "client-dev": "npx webpack --watch",
     "server-dev": "npx nodemon --watch server server/index.js",
     "start": "node server/index.js",
-    "build": "npx webpack"
+    "build": "npx webpack",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "babel-plugin-styled-components": "^2.0.7",
+    "css-loader": "^6.7.1",
     "eslint": "^8.14.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -33,7 +35,10 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "nodemon": "^2.0.16",
+    "style-loader": "^3.3.1",
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
@@ -42,6 +47,7 @@
     "babel-loader": "^8.2.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
+    "mongoose": "^6.3.2",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
