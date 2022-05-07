@@ -19,7 +19,7 @@ app.get('/api/problems/:id', routes.problem);
 
 app.get('/api/problems/:id/comments', routes.comments);
 
-app.post('/api/problems/:id', routes.createProblem);
+app.post('/api/problems', routes.createProblem);
 
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}/`);
