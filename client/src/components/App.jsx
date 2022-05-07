@@ -10,16 +10,13 @@ const Header = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #597081;
-  font-family: Arial;
   height: 100px;
   color: #A9CEF4;
   border-bottom: 1px solid #A9CEF4;
 `;
 
-export default function TempApp() {
+export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
-
-
   return (
     <>
       <Header>
