@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ToyProblem from './ToyProblem.jsx';
-import problems from './exampleProblems.js';
 
+import problems from './exampleProblems.js';
 
 const ListContainer = styled.div`
   display: flex;

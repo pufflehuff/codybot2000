@@ -2,6 +2,8 @@ import React from 'react';
 import List from './List.jsx';
 import styled from 'styled-components';
 
+document.body.style.backgroundColor = '#36494E;';
+
 const Header = styled.div`
   display: flex;
   justify-content: center;

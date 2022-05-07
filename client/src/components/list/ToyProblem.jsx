@@ -19,11 +19,16 @@ const Section = styled.section`
   justify-content: space-between;
 `;
 
+const Title = styled.span`
+  cursor: pointer;
+`;
+
 const Tag = styled.button`
   background: #EAB464;
   margin-right: 5px;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 `;
 
 const Difficulty = styled.span`
@@ -31,6 +36,7 @@ const Difficulty = styled.span`
   color: ${({ diff }) =>
     diff === 'hard' ? 'red' : (diff === 'medium' ? 'orange' : 'green')
   };
+  cursor: pointer;
 `;
 
 const Comments = styled.button`
@@ -41,6 +47,7 @@ const Comments = styled.button`
   color: #A9CEF4;
   height: 40px;
   width: 100px;
+  cursor: pointer;
 `;
 
 export default function ToyProblem({ problem }) {
@@ -50,18 +57,16 @@ export default function ToyProblem({ problem }) {
   return (
     <Entry>
       <Section className="title-bar">
-        <span>
+        <Title>
           <h2>{name}</h2>
-        </span>
+        </Title>
         <Difficulty diff={difficulty}>{difficulty}</Difficulty>
       </Section>
       <Section className="attributes-bar">
         <Rating rating={rating} />
         <span>
           {tags.map(tag => (
-            <Tag key={tag}>
-              {tag}
-            </Tag>
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </span>
         <Comments>Comments</Comments>
