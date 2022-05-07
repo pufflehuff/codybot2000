@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React/* , { useState, useEffect } */ from 'react';
 import styled from 'styled-components';
-import ToyProblem from './ToyProblem.jsx';
+import ToyProblem from './ToyProblem';
 
-import problems from './exampleProblems.js';
+import problems from './exampleProblems';
 
 const ListContainer = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const ListContainer = styled.div`
   font-family: Arial, sans serif;
 `;
 
-export default function List(props) {
+export default function List() {
   // const [problems, setProblems] = useState([]);
 
   // const problems_api = '/problems';
