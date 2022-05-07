@@ -51,3 +51,74 @@ button {
   width: 80%;
   color: #EAB464;
 }
+
+/* Difficulty Mark */
+.Difficulty {
+  font-size: 16px;
+  cursor: pointer;
+}
+.Easy {
+  color: green;
+}
+.Medium {
+  color: orange;
+}
+.Hard {
+  color: red;
+}
+
+.rating {
+  --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
+  --size: 3rem;
+  --length: calc(var(--size) * 5);
+  inline-size: var(--length);
+  position: relative;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  background-color:rgba(0, 0, 0, 0);
+  mask: repeat left center/var(--size) var(--star);
+  display: flex;
+}
+
+/*  Firefox Styles For Star Rating Range  */
+.rating::-moz-range-track {
+  background: rgba(100,100,100, 0.15);
+  block-size: 100%;
+  mask: repeat left center/var(--size) var(--star);
+}
+.rating::-moz-range-thumb {
+  height: var(--size);
+  opacity: 0;
+  width: var(--size);
+  background: goldenrod;
+  block-size: 100%;
+  mask: repeat left center/var(--size) var(--star);
+}
+
+/*  Chrome Styles For Star Rating Range */
+.rating::-webkit-slider-runnable-track {
+  background: rgba(100,100,100, 0.15);
+  block-size: 100%;
+  mask: repeat left center/var(--size) var(--star);
+  -webkit-mask: repeat left center/var(--size) var(--star);
+}
+.rating::-webkit-slider-thumb {
+  height: var(--size);
+  opacity: 0;
+  width: var(--size);
+  -webkit-appearance: none;
+  background-color: goldenrod;
+  box-shadow: calc(0rem - var(--length)) 0 0 var(--length) goldenrod;
+  opacity: 1;
+  width: 1px;
+}
+
+.ToyProblemTitle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.ToyProblemRow {
+  display: flex;
+  justify-content: space-between;
+}
