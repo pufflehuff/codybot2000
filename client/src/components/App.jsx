@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import List from './list/List';
+import ResponsiveAppBar from './list/Navbar';
 
 document.body.style.backgroundColor = '#36494E;';
 
@@ -15,11 +16,15 @@ const Header = styled.div`
 `;
 
 export default function App() {
+  // const [currentUser, setCurrentUser] = useState(null);
+
   return (
     <>
       <Header>
         <h2>Toy Problem List</h2>
       </Header>
+      {/* add current user as prop to responsive app bar */}
+      <ResponsiveAppBar />
       <List />
     </>
   );
