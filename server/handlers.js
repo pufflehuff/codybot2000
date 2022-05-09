@@ -2,7 +2,7 @@ const Problems = require('../database/models/problems');
 
 module.exports = {
   problems: () => Problems.find({}),
-  problem: () => 'you would normally put a db query here',
+  problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
     const newProblem = new Problems({
@@ -20,4 +20,6 @@ module.exports = {
 
     return Problems.create(newProblem);
   },
+
+  modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
 };
