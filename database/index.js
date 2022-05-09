@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { PASSWORD } = require('../config');
+const { PASSWORD, IP } = require('../config');
 
-mongoose.connect(`mongodb://admin:${PASSWORD}@3.90.209.15/codybot`);
+mongoose.connect(`mongodb://admin:${PASSWORD}@${IP}/codybot`);
 
 const db = mongoose.connection;
 
