@@ -1,0 +1,16 @@
+.PromptForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.PromptTextLabel {
+  width: 50%;
+}
+
+.PromptTopLabel {
+  width: 100%;
+}
+
+.PromptButton {
+  width: 100%;
+}
