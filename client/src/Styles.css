@@ -122,3 +122,8 @@ button {
   display: flex;
   justify-content: space-between;
 }
+
+.navbar-icon {
+  height: 125px;
+  width: 125px;
+}

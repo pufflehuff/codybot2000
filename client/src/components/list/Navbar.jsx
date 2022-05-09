@@ -29,7 +29,7 @@ function ResponsiveAppBar() {
   const greeting = 'Welcome to Codybot2000!';
 
   const pages = ['Create a Problem'];
-  const settings = ['Profile', 'Dashboard', 'Logout'];
+  const settings = ['Login', 'Profile', 'Dashboard', 'Logout'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -46,11 +46,15 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const onLoginClick = () => {
+    console.log('Im clicking the login button and all Im getting is this lousy console log');
+  };
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#597081', color: '#A9CEF4' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <img src={logo} /> */}
+          <img className="navbar-icon" src={Logo} alt="Darwin Icon" />
           <div>{greeting}</div>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -82,7 +86,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => onLoginClick()}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -141,11 +145,21 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (setting === 'Login') {
+                  return (
+                    <MenuItem key={setting} onClick={() => onLoginClick()}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  )
+                } else {
+                  return(
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  )
+                }
+              })}
             </Menu>
           </Box>
         </Toolbar>
