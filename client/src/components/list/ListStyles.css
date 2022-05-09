@@ -1,9 +1,14 @@
 /* Toy Problem List Stuff */
+.ListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  height: 85.5vh;
+}
+
 .Comments {
-  padding-top: .5%;
-  padding-bottom: .5%;
-  padding-left: 3%;
-  padding-right: 3%;
+
 }
 
 .Tags {
@@ -11,6 +16,7 @@
   margin-right: .5rem;
   border-radius: 1rem;
   color: #2a383c;
+  padding: .1em;
 }
 
 .ToyProblemEntry {
@@ -29,6 +35,10 @@
 .Difficulty {
   font-size: 1.5em;
   cursor: pointer;
+  background-color: #212D30;
+  padding-left: .25em;
+  padding-right: .25em;
+  border-radius: .5em;
 }
 .easy {
   color: green;
@@ -50,8 +60,3 @@
   justify-content: space-between;
 }
 
-.ListContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
