@@ -4,19 +4,7 @@
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  height: 85.5vh;
-}
-
-.Comments {
-
-}
-
-.Tags {
-  background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
-  margin-right: .5rem;
-  border-radius: 1rem;
-  color: #2a383c;
-  padding: .1em;
+  /* height: 85.5vh; */
 }
 
 .ToyProblemEntry {
@@ -30,6 +18,30 @@
   width: 80%;
   color: #EAB464;
 }
+
+.ToyProblemTitle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.ToyProblemRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.Comments {
+
+}
+
+.Tags {
+  background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
+  margin-right: .5rem;
+  border-radius: 1rem;
+  color: #2a383c;
+  padding: .1em;
+}
+
 
 /* Difficulty Mark */
 .Difficulty {
@@ -50,13 +62,4 @@
   color: red;
 }
 
-.ToyProblemTitle {
-  cursor: pointer;
-  display: inline-block;
-}
-
-.ToyProblemRow {
-  display: flex;
-  justify-content: space-between;
-}
 
