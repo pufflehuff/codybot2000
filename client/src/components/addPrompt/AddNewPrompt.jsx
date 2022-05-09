@@ -1,48 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const PromptFoprm = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const TextLabel = styled.label`
-  width: 50%
-`;
-
-const TopLabel = styled.label`
-  width: 100%
-`;
-
-const ButtonDiv = styled.div`
-  width: 100%
-`;
 
 export default function AddNewPrompt() {
   return (
-    <PromptFoprm>
+    <form className="PromptFrom">
 
-      <TopLabel htmlFor="promptName">
+      <label htmlFor="promptName" className="PromptTopLabel">
         <input type="text" name="propmptName" />
         Prompt Name
-      </TopLabel>
+      </label>
 
-      <TextLabel htmlFor="promptBody">
+      <label htmlFor="promptBody" className="PromptTextLabel">
         <textarea type="textarea" name="body" />
         Prompt Body
-      </TextLabel>
+      </label>
 
-      <TextLabel htmlFor="testsBody">
-        <textarea type="textarea" name="testsBody" />
+      <label htmlFor="testsBody">
+        <textarea type="textarea" name="testsBody" className="PromptTextLabel" />
         Tests Body
-      </TextLabel>
+      </label>
 
-      <ButtonDiv>
+      <div className="PromptButton">
         <button type="submit">
           Submit
         </button>
-      </ButtonDiv>
+      </div>
 
-    </PromptFoprm>
+    </form>
   );
 }
