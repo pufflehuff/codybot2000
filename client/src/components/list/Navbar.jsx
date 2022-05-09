@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // eslint-disable-next-line no-unused-vars
 import Logo from 'Assets/Darwin.png';
-import LoginModal from './LoginModal';
+import AllModal from './AllModal';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -30,7 +30,7 @@ function ResponsiveAppBar() {
   const greeting = 'Welcome to Codybot2000!';
 
   const pages = ['Create a Problem'];
-  const settings = ['Login', 'Profile', 'Dashboard', 'Logout'];
+  const settings = ['Login', 'Statistics', 'Logout'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -146,18 +146,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => {
-                if (setting === 'Login') {
-                  return (
-                    <LoginModal key="login" />
-                  );
-                }
-                return (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                );
-              })}
+              {settings.map((setting) => <AllModal key={setting} type={setting} />)}
             </Menu>
           </Box>
         </Toolbar>
