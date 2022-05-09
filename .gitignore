@@ -3,5 +3,6 @@ coverage/
 
 *bundle.js*
 *.map
+**/dist/*.png
 
 .env
