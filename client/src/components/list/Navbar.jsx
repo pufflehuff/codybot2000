@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // eslint-disable-next-line no-unused-vars
 import Logo from 'Assets/Darwin.png';
+import LoginModal from './LoginModal';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -47,7 +48,7 @@ function ResponsiveAppBar() {
   };
 
   const onLoginClick = () => {
-    console.log('Im clicking the login button and all Im getting is this lousy console log');
+    console.log('blah');
   };
 
   return (
@@ -86,7 +87,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => onLoginClick()}>
+                <MenuItem key={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -148,17 +149,14 @@ function ResponsiveAppBar() {
               {settings.map((setting) => {
                 if (setting === 'Login') {
                   return (
-                    <MenuItem key={setting} onClick={() => onLoginClick()}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  )
-                } else {
-                  return(
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  )
+                    <LoginModal key="login" />
+                  );
                 }
+                return (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                );
               })}
             </Menu>
           </Box>
