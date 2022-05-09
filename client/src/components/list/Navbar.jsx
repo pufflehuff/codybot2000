@@ -47,10 +47,6 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const onLoginClick = () => {
-    console.log('blah');
-  };
-
   return (
     <AppBar position="static" sx={{ backgroundColor: '#597081', color: '#A9CEF4' }}>
       <Container maxWidth="xl">

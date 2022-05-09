@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import MenuItem from '@mui/material/MenuItem';
+import PropTypes from 'prop-types';
 
 const style = {
   position: 'absolute',
@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function AllModal({type}) {
+export default function AllModal({ type }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -60,10 +60,10 @@ export default function AllModal({type}) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
+              Statistics
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              THIS IS OUR STATISTICS MODAL
             </Typography>
           </Box>
         </Modal>
@@ -84,10 +84,10 @@ export default function AllModal({type}) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
+              Logout Screen
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              Thanks for Visiting Codybot2000!
             </Typography>
           </Box>
         </Modal>
@@ -95,3 +95,7 @@ export default function AllModal({type}) {
     );
   }
 }
+
+AllModal.propTypes = {
+  type: PropTypes.string.isRequired,
+};
