@@ -78,7 +78,6 @@ export default function AddNewPrompt() {
           />
         </label>
 
-
         <label htmlFor="testsBody" className="PromptLabel">
           Tests Body
           <textarea
