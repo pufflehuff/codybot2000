@@ -22,4 +22,8 @@ module.exports = {
   },
 
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
+
+  // getUserData: (userId) => {
+  //   // query DB here with userID
+  // },
 };

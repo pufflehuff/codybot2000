@@ -20,6 +20,8 @@ app.get('/api/problems/:_id', routes.problem);
 app.get('/api/problems/:_id/comments', routes.comments);
 app.put('/api/problems/:_id', routes.modifyProblem);
 
+// app.get('/api/userStats/:username', routes.userStats);
+
 app.post('/api/problems', routes.createProblem);
 
 app.listen(port, () => {
