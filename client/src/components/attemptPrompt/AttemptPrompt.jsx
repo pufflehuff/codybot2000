@@ -20,11 +20,11 @@ function AttemptPrompt() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // setHtml(`${eval(`${js}`)}`);
     try {
+      // eslint-disable-next-line no-eval
       setHtml(`${html}<br>> ${eval(`${js}`)}`);
-    } catch (e) {
-      setHtml(`${html} <br>> ${e}`);
+    } catch (err) {
+      setHtml(`${html} <br>> ${err}`);
     }
   };
 
