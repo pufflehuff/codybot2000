@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
 
   window.handleCredentialResponse = (response) => {
     const { sub } = parseJwt(response.credential);
-    fetch(`http://localhost:3000/userStats/${JSON.stringify(sub)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+    fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
       .then((result) => {
         console.log(result);
       })

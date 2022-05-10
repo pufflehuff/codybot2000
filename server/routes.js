@@ -25,9 +25,12 @@ module.exports.createProblem = (req, res) => {
 };
 
 module.exports.userStats = (req, res) => {
-  handlers.getUserData(req, res)
-    .then((data) => res.json(data))
-    .catch((err) => res.status(500).json(err));
+  // username is the google identifier ID that is unique to each google account
+  // - we can use it to identify a user
+  const { username } = req.params;
+  // handlers.getUserData(req, res)
+  //   .then((data) => res.json(data))
+  //   .catch((err) => res.status(500).json(err));
 };
 
 module.exports.modifyProblem = (req, res) => {
