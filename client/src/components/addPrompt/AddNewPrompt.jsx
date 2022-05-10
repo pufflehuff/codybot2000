@@ -27,46 +27,48 @@ export default function AddNewPrompt() {
   };
 
   return (
-    <form className="PromptFrom">
+    <form className="PromptForm">
+      <div className="PromptRow">
+        <label htmlFor="promptName" className="PromptLabel">
+          Prompt Name
+          <input
+            type="text"
+            name="propmptName"
+            onChange={(event) => {
+              setPromptName(event.target.value);
+            }}
+          />
+        </label>
+      </div>
+      <div className="PromptRow">
+        <label htmlFor="promptDificulty" className="PromptLabel">
+          Dificulty
+          <select
+            onChange={(event) => {
+              setDificulty(event.target.value);
+            }}
+          >
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        Constraints
+        <label htmlFor="promptCOnstraints" className="PromptLabel">
 
-      Prompt Name
-      <label htmlFor="promptName" className="PromptLabel">
-        <input
-          type="text"
-          name="propmptName"
-          onChange={(event) => {
-            setPromptName(event.target.value);
-          }}
-        />
-      </label>
-
-      Dificulty
-      <label htmlFor="promptDificulty" className="PromptLabel">
-        <select
-          onChange={(event) => {
-            setDificulty(event.target.value);
-          }}
-        >
-          <option>Easy</option>
-          <option>Medium</option>
-          <option>Hard</option>
-        </select>
-      </label>
-
-      Constraints
-      <label htmlFor="promptCOnstraints" className="PromptLabel">
-        <input
-          type="text"
-          name="propmptConstraints"
-          onChange={(event) => {
-            setConstraints(event.target.value);
-          }}
-        />
-      </label>
+          <input
+            type="text"
+            name="propmptConstraints"
+            onChange={(event) => {
+              setConstraints(event.target.value);
+            }}
+          />
+        </label>
+      </div>
 
       <div className="PromptRow">
-        Prompt Body
         <label htmlFor="promptBody" className="PromptLabel">
+          Prompt Body
           <textarea
             type="textarea"
             name="promptBody"
@@ -76,8 +78,9 @@ export default function AddNewPrompt() {
           />
         </label>
 
-        Tests Body
+
         <label htmlFor="testsBody" className="PromptLabel">
+          Tests Body
           <textarea
             type="textarea"
             name="testsBody"
