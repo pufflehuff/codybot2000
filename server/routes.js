@@ -7,7 +7,7 @@ module.exports.problems = (req, res) => {
 };
 
 module.exports.problem = (req, res) => {
-  handlers.problem(res, req)
+  handlers.problem(req)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
@@ -26,6 +26,12 @@ module.exports.createProblem = (req, res) => {
 
 module.exports.userStats = (req, res) => {
   handlers.getUserData(req, res)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
+
+module.exports.modifyProblem = (req, res) => {
+  handlers.modifyProblem(req, res)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
