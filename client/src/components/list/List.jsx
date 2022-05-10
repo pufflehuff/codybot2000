@@ -1,28 +1,42 @@
-import React/* , { useState, useEffect } */ from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ToyProblem from './ToyProblem';
 
-import problems from './exampleProblems';
+// import problems from './exampleProblems';
 
 export default function List() {
-  // const [problems, setProblems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [problems, setProblems] = useState([]);
+  const [display, setDisplay] = useState([]);
+  const [filter, setFilter] = useState('');
 
-  // const problems_api = '/problems';
+  useEffect(() => {
+    axios.get('/api/problems')
+      .then(({ data }) => {
+        setProblems(data);
+        setDisplay(data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-  // useEffect(() => {
-  //   axios.get(problems_api)
-  //     .then(({ data }) => {
-  //       setProblems(data);
-  //     })
-  //     .catch(err => console.log(err));
-  //   },
-  //   []
-  // );
+  useEffect(() => {
+    if (filter) {
+      const filtered = problems.filter(({ difficulty, tags }) => (
+        [difficulty, ...tags].includes(filter)
+      ));
+      setDisplay(filtered);
+      console.log(filtered);
+    }
+  }, [filter]);
 
-  return (
-    <div className="ListContainer">
-      {problems.map((problem, index) => (
-        <ToyProblem key={index + 1} problem={problem} />
-      ))}
-    </div>
-  );
+  if (!loading) {
+    return (
+      <div className="ListContainer">
+        {display.map((problem, index) => (
+          <ToyProblem key={index + 1} problem={problem} setFilter={setFilter} />
+        ))}
+      </div>
+    );
+  }
 }
