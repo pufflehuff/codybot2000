@@ -14,8 +14,7 @@ const usersSchema = mongoose.Schema({
     _id: false,
   }],
   streak: Number,
-  versionKey: false,
-});
+}, { versionKey: false });
 
 const Users = mongoose.model('codybot', usersSchema);
 
