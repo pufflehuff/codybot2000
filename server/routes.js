@@ -1,3 +1,4 @@
+/* eslint-disable */
 const handlers = require('./handlers');
 
 module.exports.problems = (req, res) => {
@@ -32,7 +33,7 @@ module.exports.userStats = (req, res) => {
   console.log(`email: ${email}`);
   console.log(`first: ${first}`);
   console.log(`last: ${last}`);
-  handlers.getUserData(req, res)
+  handlers.getUserData(username)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
