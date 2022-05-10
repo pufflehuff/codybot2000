@@ -16,6 +16,7 @@ const problemSchema = mongoose.Schema({
   numRatings: Number,
   timestamp: String,
   author: String,
+  versionKey: false,
 });
 
 const Problems = mongoose.model('codybot', problemSchema);
