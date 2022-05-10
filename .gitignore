@@ -6,3 +6,5 @@ coverage/
 **/dist/*.png
 
 .env
+
+package-lock.json
