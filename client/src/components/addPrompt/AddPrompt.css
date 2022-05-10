@@ -32,4 +32,7 @@ textarea {
   width: 35vw;
   margin-left: .5vw;
   margin-right: .5vw;
+  background-color: #263238;
+  color: #eab464;
+  border: .1em solid #A9CEF4;
 }
