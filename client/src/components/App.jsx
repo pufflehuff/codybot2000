@@ -1,8 +1,6 @@
 import React from 'react';
-import List from './list/List';
-import ResponsiveAppBar from './list/Navbar';
-import AddNewPrompt from './addPrompt/AddNewPrompt';
-import AttemptPrompt from './attemptPrompt/AttemptPrompt';
+import { Outlet } from 'react-router-dom';
+import ResponsiveAppBar from './Navbar';
 
 document.body.style.backgroundColor = '#36494E;';
 
@@ -11,12 +9,9 @@ export default function App() {
 
   return (
     <>
-
       {/* add current user as prop to responsive app bar */}
       <ResponsiveAppBar />
-      <List />
-      <AddNewPrompt />
-      <AttemptPrompt />
+      <Outlet />
     </>
   );
 }
