@@ -47,6 +47,10 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  window.handleCredentialResponse = (response) => {
+    console.log(response);
+  };
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#597081', color: '#A9CEF4' }}>
       <Container maxWidth="xl">
