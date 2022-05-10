@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ToyProblem from './ToyProblem';
 
-// import problems from './exampleProblems';
-
 export default function List() {
   const [loading, setLoading] = useState(true);
   const [problems, setProblems] = useState([]);
@@ -26,7 +24,6 @@ export default function List() {
         [difficulty, ...tags].includes(filter)
       ));
       setDisplay(filtered);
-      console.log(filtered);
     }
   }, [filter]);
 

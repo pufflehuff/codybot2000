@@ -1,12 +1,13 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import List from './list/List';
-import ResponsiveAppBar from './list/Navbar';
+import ResponsiveAppBar from './Navbar';
 
 document.body.style.backgroundColor = '#36494E;';
 
 const Header = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #597081;
@@ -25,7 +26,7 @@ export default function App() {
       </Header>
       {/* add current user as prop to responsive app bar */}
       <ResponsiveAppBar />
-      <List />
+      <Outlet />
     </>
   );
 }
