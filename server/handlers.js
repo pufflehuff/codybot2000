@@ -20,4 +20,7 @@ module.exports = {
 
     return Problems.create(newProblem);
   },
+  // getUserData: (userId) => {
+  //   // query DB here with userID
+  // },
 };

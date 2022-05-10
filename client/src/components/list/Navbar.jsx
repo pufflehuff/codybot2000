@@ -47,8 +47,23 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const parseJwt = (token) => {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+
+    return JSON.parse(jsonPayload);
+  };
+
   window.handleCredentialResponse = (response) => {
-    console.log(response);
+    const { sub } = parseJwt(response.credential);
+    fetch(`http://localhost:3000/userStats/${JSON.stringify(sub)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

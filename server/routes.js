@@ -23,3 +23,9 @@ module.exports.createProblem = (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
+
+module.exports.userStats = (req, res) => {
+  handlers.getUserData(req, res)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
