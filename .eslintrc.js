@@ -37,6 +37,7 @@ module.exports = {
       alias: {
         map: [
           ['Components', './client/src/components/'],
+          ['Assets', './client/assets/'],
         ],
         extensions: ['.js', '.jsx'],
       },

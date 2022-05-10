@@ -21,12 +21,17 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
       Components: path.resolve(__dirname, 'client/src/components'),
+      Assets: path.resolve(__dirname, 'client/assets'),
     },
   },
 };

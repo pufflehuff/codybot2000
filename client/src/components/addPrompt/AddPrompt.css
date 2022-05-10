@@ -1,0 +1,35 @@
+.PromptRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 1.5em 3em;
+  width: 80%;
+  color: #EAB464;
+}
+
+.SubmitPrompt {
+
+}
+
+label, textarea, input {
+  display: block;
+}
+
+.PromptLabel {
+  text-align:center;
+}
+
+.PromptForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  resize:none;
+  overflow: auto;
+  height: 65vh;
+  width: 35vw;
+  margin-left: .5vw;
+  margin-right: .5vw;
+}

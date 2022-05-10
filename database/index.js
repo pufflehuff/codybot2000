@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/codybot');
+mongoose.connect(`mongodb://admin:${process.env.PASSWORD}@${process.env.IP}/codybot`);
 
 const db = mongoose.connection;
 

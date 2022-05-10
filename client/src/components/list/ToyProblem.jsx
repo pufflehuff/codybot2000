@@ -3,21 +3,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRating from './StarRating';
 
-export default function ToyProblem({ problem }) {
+export default function ToyProblem({ problem, setFilter }) {
   // eslint-disable-next-line object-curly-newline, no-unused-vars
-  const { name, prompt, tags, difficulty, upvotes, downvotes, rating, timestamp, author } = problem;
+  const { name, prompt, tags, difficulty, numRatings, rating, timestamp, author } = problem;
 
   return (
     <div className="ToyProblemEntry">
       <div className="ToyProblemRow">
         <h2 className="ToyProblemTitle">{name}</h2>
-        <span className={`Difficulty ${difficulty}`} diff={difficulty}>{difficulty}</span>
+        <span
+          className={`Difficulty ${difficulty}`}
+          diff={difficulty}
+          onClick={() => setFilter(difficulty)}
+          aria-hidden="true"
+        >
+          {difficulty}
+        </span>
       </div>
       <div className="ToyProblemRow">
         <StarRating rating={rating} special="ToyProblemRating" />
         <span>
           {tags.map((tag) => (
-            <button className="Tags " type="button" key={tag}>{tag}</button>
+            <button
+              className="Tags"
+              type="button"
+              key={tag}
+              onClick={() => setFilter(tag)}
+            >
+              {tag}
+            </button>
           ))}
         </span>
         <button className="Comments" type="button">Comments</button>
@@ -27,14 +41,27 @@ export default function ToyProblem({ problem }) {
 }
 
 ToyProblem.propTypes = {
-  problem: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  prompt: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
-  difficulty: PropTypes.string.isRequired,
-  upvotes: PropTypes.number.isRequired,
-  downvotes: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  timestamp: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  problem: PropTypes.object,
+  name: PropTypes.string,
+  prompt: PropTypes.string,
+  tags: PropTypes.array,
+  difficulty: PropTypes.string,
+  numRatings: PropTypes.number,
+  rating: PropTypes.number,
+  timestamp: PropTypes.string,
+  author: PropTypes.string,
+  setFilter: PropTypes.func,
+};
+
+ToyProblem.defaultProps = {
+  problem: {},
+  name: '',
+  prompt: '',
+  tags: [],
+  difficulty: '',
+  numRatings: null,
+  rating: null,
+  timestamp: '',
+  author: '',
+  setFilter: {},
 };
