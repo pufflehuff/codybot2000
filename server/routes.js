@@ -1,3 +1,4 @@
+/* eslint-disable */
 const handlers = require('./handlers');
 
 module.exports.problems = (req, res) => {
@@ -24,14 +25,18 @@ module.exports.createProblem = (req, res) => {
     .catch((err) => res.status(500).json(err));
 };
 
-// module.exports.userStats = (req, res) => {
-//   // username is the google identifier ID that is unique to each google account
-//   // - we can use it to identify a user
-//   // const { username } = req.params;
-//   // handlers.getUserData(req, res)
-//   //   .then((data) => res.json(data))
-//   //   .catch((err) => res.status(500).json(err));
-// };
+module.exports.userStats = (req, res) => {
+  // username is the google identifier ID that is unique to each google account
+  // - we can use it to identify a user
+  const { username, email, first, last } = req.params;
+  console.log(`Username: ${username}`);
+  console.log(`email: ${email}`);
+  console.log(`first: ${first}`);
+  console.log(`last: ${last}`);
+  handlers.getUserData(username)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
 
 module.exports.modifyProblem = (req, res) => {
   handlers.modifyProblem(req, res)
