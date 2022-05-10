@@ -142,7 +142,32 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => <AllModal key={setting} type={setting} />)}
+              {settings.map((setting) => {
+                if (setting === 'Login') {
+                  return (
+                    <>
+                      <div
+                        id="g_id_onload"
+                        data-client_id="1041808193164-18g6c4g0uquku3e1a4mmfvtobdpshocv.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse"
+                        data-login_uri="http://localhost:3000"
+                        data-auto_prompt="false"
+                        // data-ux_mode="redirect"
+                      />
+                      <div
+                        className="g_id_signin"
+                        data-type="standard"
+                        data-size="large"
+                        data-theme="outline"
+                        data-text="sign_in_with"
+                        data-shape="rectangular"
+                        data-logo_alignment="left"
+                      />
+                    </>
+                  );
+                }
+                return <AllModal key={setting} type={setting} />;
+              })}
             </Menu>
           </Box>
         </Toolbar>
