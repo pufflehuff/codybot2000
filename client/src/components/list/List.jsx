@@ -27,13 +27,13 @@ export default function List() {
     }
   }, [filter]);
 
-  if (!loading) {
-    return (
+  return (
+    loading ? null : (
       <div className="ListContainer">
         {display.map((problem, index) => (
           <ToyProblem key={index + 1} problem={problem} setFilter={setFilter} />
         ))}
       </div>
-    );
-  }
+    )
+  );
 }
