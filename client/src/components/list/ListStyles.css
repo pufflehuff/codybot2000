@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  /* height: 85.5vh; */
+  height: 93vh;
 }
 
 .ToyProblemEntry {
@@ -14,7 +14,7 @@
   border: .1em solid #A9CEF4;
   border-top: none;
   padding: 1.5em 3em;
-  height: 15em;
+  height: 15%;
   width: 80%;
   color: #EAB464;
 }
