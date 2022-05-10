@@ -17,6 +17,12 @@ const style = {
   p: 4,
 };
 
+const onLogoutClick = () => {
+  // I think that this is for cookies - it will record the status of logged out in cookies
+  window.google.accounts.id.disableAutoSelect();
+  console.log('You have been successfully logged out!');
+};
+
 export default function AllModal({ type }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -49,9 +55,11 @@ export default function AllModal({ type }) {
   if (type === 'Logout') {
     return (
       <div>
-        <MenuItem onClick={handleOpen}>
-          <Typography textAlign="center">Logout</Typography>
-        </MenuItem>
+        <Box onClick={onLogoutClick}>
+          <MenuItem onClick={handleOpen}>
+            <Typography textAlign="center">Logout</Typography>
+          </MenuItem>
+        </Box>
         <Modal
           open={open}
           onClose={handleClose}
