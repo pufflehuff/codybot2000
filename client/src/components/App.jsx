@@ -2,6 +2,7 @@ import React from 'react';
 import List from './list/List';
 import ResponsiveAppBar from './list/Navbar';
 import AddNewPrompt from './addPrompt/AddNewPrompt';
+import AttemptPrompt from './attemptPrompt/AttemptPrompt';
 
 document.body.style.backgroundColor = '#36494E;';
 
@@ -15,6 +16,7 @@ export default function App() {
       <ResponsiveAppBar />
       <List />
       <AddNewPrompt />
+      <AttemptPrompt />
     </>
   );
 }
