@@ -15,9 +15,12 @@ const port = process.env.PORT || 3000;
 
 app.get('/api/problems', routes.problems);
 
-app.get('/api/problems/:id', routes.problem);
+app.get('/api/problems/:_id', routes.problem);
 
-app.get('/api/problems/:id/comments', routes.comments);
+app.get('/api/problems/:_id/comments', routes.comments);
+app.put('/api/problems/:_id', routes.modifyProblem);
+
+// app.get('/api/userStats/:username', routes.userStats);
 
 app.post('/api/problems', routes.createProblem);
 

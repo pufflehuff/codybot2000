@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // eslint-disable-next-line no-unused-vars
 import Logo from 'Assets/Darwin.png';
+import AllModal from './AllModal';
 
 function ResponsiveAppBar() {
   // eslint-disable-next-line no-unused-vars
@@ -30,8 +31,8 @@ function ResponsiveAppBar() {
 
   const greeting = 'Welcome to Codybot2000!';
 
-  // const pages = ['List Problems', 'Solve a Problem', 'Add a Problem'];
-  const settings = ['Profile', 'Dashboard', 'Logout'];
+  // const pages = ['Create a Problem'];
+  const settings = ['Login', 'Statistics', 'Logout'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,11 +49,30 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const parseJwt = (token) => {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+
+    return JSON.parse(jsonPayload);
+  };
+
+  window.handleCredentialResponse = (response) => {
+    const { sub } = parseJwt(response.credential);
+    fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#597081', color: '#A9CEF4' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <img src={logo} /> */}
+          <img className="navbar-icon" src={Logo} alt="Darwin Icon" />
           <div>{greeting}</div>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -84,7 +104,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -161,11 +181,32 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (setting === 'Login') {
+                  return (
+                    <>
+                      <div
+                        id="g_id_onload"
+                        data-client_id="1041808193164-18g6c4g0uquku3e1a4mmfvtobdpshocv.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse"
+                        data-login_uri="http://localhost:3000"
+                        data-auto_prompt="false"
+                        // data-ux_mode="redirect"
+                      />
+                      <div
+                        className="g_id_signin"
+                        data-type="standard"
+                        data-size="large"
+                        data-theme="outline"
+                        data-text="sign_in_with"
+                        data-shape="rectangular"
+                        data-logo_alignment="left"
+                      />
+                    </>
+                  );
+                }
+                return <AllModal key={setting} type={setting} />;
+              })}
             </Menu>
           </Box>
         </Toolbar>
