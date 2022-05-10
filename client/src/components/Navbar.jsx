@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,6 +11,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
+// eslint-disable-next-line no-unused-vars
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 // eslint-disable-next-line no-unused-vars
@@ -17,6 +19,7 @@ import Logo from 'Assets/Darwin.png';
 import AllModal from './AllModal';
 
 function ResponsiveAppBar() {
+  // eslint-disable-next-line no-unused-vars
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   // let greeting;
@@ -29,7 +32,7 @@ function ResponsiveAppBar() {
 
   const greeting = 'Welcome to Codybot2000!';
 
-  const pages = ['Create a Problem'];
+  // const pages = ['Create a Problem'];
   const settings = ['Login', 'Statistics', 'Logout'];
 
   const handleOpenNavMenu = (event) => {
@@ -83,7 +86,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -106,7 +109,7 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -128,15 +131,33 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link to="/">
               <Button
-                key={page}
+                key="list"
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                LIST PROBLEMS
               </Button>
-            ))}
+            </Link>
+            <Link to="solve">
+              <Button
+                key="solve"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                SOLVE A PROBLEM
+              </Button>
+            </Link>
+            <Link to="add">
+              <Button
+                key="add"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                ADD A PROBLEM
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
