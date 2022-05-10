@@ -19,6 +19,8 @@ app.get('/api/problems/:id', routes.problem);
 
 app.get('/api/problems/:id/comments', routes.comments);
 
+app.get('/api/userStats/:username', routes.userStats);
+
 app.post('/api/problems', routes.createProblem);
 
 app.listen(port, () => {
