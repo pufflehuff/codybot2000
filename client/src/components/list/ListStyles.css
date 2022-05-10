@@ -1,16 +1,10 @@
 /* Toy Problem List Stuff */
-.Comments {
-  padding-top: .5%;
-  padding-bottom: .5%;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.Tags {
-  background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
-  margin-right: .5rem;
-  border-radius: 1rem;
-  color: #2a383c;
+.ListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  height: 93vh;
 }
 
 .ToyProblemEntry {
@@ -20,24 +14,9 @@
   border: .1em solid #A9CEF4;
   border-top: none;
   padding: 1.5em 3em;
-  height: 15em;
+  height: 15%;
   width: 80%;
   color: #EAB464;
-}
-
-/* Difficulty Mark */
-.Difficulty {
-  font-size: 1.5em;
-  cursor: pointer;
-}
-.easy {
-  color: green;
-}
-.medium {
-  color: orange;
-}
-.hard {
-  color: red;
 }
 
 .ToyProblemTitle {
@@ -50,8 +29,37 @@
   justify-content: space-between;
 }
 
-.ListContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.Comments {
+
 }
+
+.Tags {
+  background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
+  margin-right: .5rem;
+  border-radius: 1rem;
+  color: #2a383c;
+  padding: .1em;
+}
+
+
+/* Difficulty Mark */
+.Difficulty {
+  font-size: 1.5em;
+  cursor: pointer;
+  background-color: #212D30;
+  padding-left: .25em;
+  padding-right: .25em;
+  border-radius: .5em;
+}
+.easy {
+  color: green;
+}
+.medium {
+  color: orange;
+}
+.hard {
+  color: red;
+}
+
+
