@@ -53,17 +53,6 @@ export default function AddNewPrompt() {
         </select>
       </label>
 
-      Prompt Body
-      <label htmlFor="promptBody" className="PromptLabel">
-        <textarea
-          type="textarea"
-          name="promptBody"
-          onChange={(event) => {
-            setPromptBody(event.target.value);
-          }}
-        />
-      </label>
-
       Constraints
       <label htmlFor="promptCOnstraints" className="PromptLabel">
         <input
@@ -75,19 +64,33 @@ export default function AddNewPrompt() {
         />
       </label>
 
-      Tests Body
-      <label htmlFor="testsBody" className="PromptLabel">
-        <textarea
-          type="textarea"
-          name="testsBody"
-          onChange={(event) => {
-            setTestsBody(event.target.value);
-          }}
-        />
-      </label>
+      <div className="PromptRow">
+        Prompt Body
+        <label htmlFor="promptBody" className="PromptLabel">
+          <textarea
+            type="textarea"
+            name="promptBody"
+            onChange={(event) => {
+              setPromptBody(event.target.value);
+            }}
+          />
+        </label>
 
-      <div className="PromptButton">
+        Tests Body
+        <label htmlFor="testsBody" className="PromptLabel">
+          <textarea
+            type="textarea"
+            name="testsBody"
+            onChange={(event) => {
+              setTestsBody(event.target.value);
+            }}
+          />
+        </label>
+      </div>
+
+      <div className="PromptRow">
         <button
+          className="SubmitPrompt"
           type="submit"
           onClick={(event) => {
             event.preventDefault();
