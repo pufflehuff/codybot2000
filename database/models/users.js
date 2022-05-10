@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
 const usersSchema = mongoose.Schema({
-  username: String,
-  completed: [{
+  firstName: String,
+  lastName: String,
+  email: String,
+  problems: [{
     problemId: String,
     problemName: String,
-    timeCompleted: String,
+    isComplete: Boolean,
     _id: false,
   }],
   submitted: [{
@@ -14,6 +16,7 @@ const usersSchema = mongoose.Schema({
     _id: false,
   }],
   streak: Number,
+  lastDateCompleted: String,
 }, { versionKey: false });
 
 const Users = mongoose.model('codybot', usersSchema);
