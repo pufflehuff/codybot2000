@@ -22,6 +22,7 @@ function ResponsiveAppBar() {
   // eslint-disable-next-line no-unused-vars
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [loggedInUser, setLoggedInUser] = React.useState('');
   // let greeting;
   // use once current user gets passed in as prop
   // if (currentUser === null) {
@@ -59,8 +60,10 @@ function ResponsiveAppBar() {
   };
 
   window.handleCredentialResponse = (response) => {
-    const { sub } = parseJwt(response.credential);
-    fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+    const {
+      sub, email, given_name, family_name
+    } = parseJwt(response.credential);
+    fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}/${JSON.stringify(email)}/${JSON.stringify(given_name)}/${JSON.stringify(family_name)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
       .then((result) => {
         console.log(result);
       })
@@ -86,50 +89,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            {/* <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link to="/">
               <Button
@@ -163,7 +123,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={loggedInUser.length ? loggedInUser : ''} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -185,7 +145,7 @@ function ResponsiveAppBar() {
               {settings.map((setting) => {
                 if (setting === 'Login') {
                   return (
-                    <>
+                    <div key={setting}>
                       <div
                         id="g_id_onload"
                         data-client_id="1041808193164-18g6c4g0uquku3e1a4mmfvtobdpshocv.apps.googleusercontent.com"
@@ -203,7 +163,7 @@ function ResponsiveAppBar() {
                         data-shape="rectangular"
                         data-logo_alignment="left"
                       />
-                    </>
+                    </div>
                   );
                 }
                 return <AllModal key={setting} type={setting} />;
