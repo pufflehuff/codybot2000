@@ -80,34 +80,6 @@ export default function AttemptPrompt() {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-      <div>
-        <SetTimer />
-      </div>
-      <div className="playground">
-        <Editor
-          language="javascript"
-          displayName="JS"
-          value={js}
-          onChange={setJs}
-          handleClick={handleClick}
-        />
-      </div>
-      <div className="result">
-        <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
-        <ControlledEditor
-          value={html}
-          className="code-mirror-wrapper"
-          options={{
-            linewrapping: true,
-            theme: 'material',
-            readOnly: true,
-          }}
-        />
-      </div>
-    </div>
-=======
     <Page>
       <Left className="ToyProblemLeft">
         <div className="playground">
@@ -138,6 +110,5 @@ export default function AttemptPrompt() {
         </div>
       </Right>
     </Page>
->>>>>>> main
   );
 }
