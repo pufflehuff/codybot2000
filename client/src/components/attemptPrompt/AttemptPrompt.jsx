@@ -1,30 +1,12 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 import Prompt from './Prompt';
-
-const Page = styled.div`
-  display: flex;
-`;
-
-const Left = styled.div`
-  width: 50%;
-`;
-
-const Right = styled.div`
-  width: 50%;
-`;
-
-const PromptContainer = styled.div`
-  height: 500px;
-  padding: 20px;
-`;
 
 const defaultProblem = {
   name: 'Two Sum',
@@ -79,8 +61,8 @@ export default function AttemptPrompt() {
   };
 
   return (
-    <Page>
-      <Left className="ToyProblemLeft">
+    <div className="PromptPage">
+      <div className="PromptPageLeft">
         <div className="playground">
           <Editor
             language="javascript"
@@ -90,11 +72,11 @@ export default function AttemptPrompt() {
             handleClick={handleClick}
           />
         </div>
-      </Left>
-      <Right className="ToyProblemRight">
-        <PromptContainer>
+      </div>
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
           <Prompt problem={problem} />
-        </PromptContainer>
+        </div>
         <div className="result">
           <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
           <ControlledEditor
@@ -107,7 +89,7 @@ export default function AttemptPrompt() {
             }}
           />
         </div>
-      </Right>
-    </Page>
+      </div>
+    </div>
   );
 }
