@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 import React, { useState } from 'react';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import 'codemirror/lib/codemirror.css';
