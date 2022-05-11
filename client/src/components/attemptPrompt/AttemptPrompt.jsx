@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 
 function AttemptPrompt() {
-  const [html, setHtml] = useState('');
+  const [html, setHtml] = useState(null);
   const [js, setJs] = useState('');
-  const [srcDoc, setSrcDoc] = useState('');
-
-  useEffect(() => {
-    setSrcDoc(`
-      <html>
-        <body>${html}</body>
-      </html>
-    `);
-    // const timeout = setTimeout(() => {
-    // }, 250);
-
-    // return () => clearTimeout(timeout);
-  }, [html]);
 
   const handleClick = (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-eval
     try {
-      // eslint-disable-next-line no-eval
-      setHtml(`${html}<br>> ${eval(`${js}`)}`);
+      if (!html) {
+        setHtml(`  > ${eval(`${js}`)}`);
+      } else {
+        setHtml(`${html}\n  > ${eval(`${js}`)}`);
+      }
     } catch (err) {
-      setHtml(`${html} <br>> ${err}`);
+      console.log(err);
+      if (!html) {
+        setHtml(`  > ${err}`);
+      } else {
+        setHtml(`${html}\n  > ${err}`);
+      }
     }
   };
 
@@ -46,14 +46,14 @@ function AttemptPrompt() {
       </div>
       <div className="result">
         <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
-        <iframe
-          title="output"
-          srcDoc={srcDoc}
-          sandbox="allow-scripts"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          className="iframe"
+        <ControlledEditor
+          value={html}
+          className="code-mirror-wrapper"
+          options={{
+            linewrapping: true,
+            theme: 'material',
+            readOnly: true,
+          }}
         />
       </div>
     </div>
