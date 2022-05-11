@@ -1,0 +1,43 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+export default function Prompt({ problem }) {
+  // eslint-disable-next-line object-curly-newline
+  const { name, prompt, constraints, examples } = problem;
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <div>{prompt}</div>
+      <div>
+        <h3>Examples:</h3>
+        <ul>
+          {examples.map((example) => (
+            <li>
+              <b>Input: </b>
+              {example.input}
+              <b> Output: </b>
+              {example.output}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Constraints:</h3>
+        <ul>
+          {constraints.map((constraint) => (
+            <li>{constraint}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+Prompt.propTypes = {
+  problem: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  prompt: PropTypes.string.isRequired,
+  constraints: PropTypes.array.isRequired,
+  examples: PropTypes.array.isRequired,
+};
