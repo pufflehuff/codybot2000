@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 
 export default function ToyProblem({ problem, setFilter }) {
@@ -10,7 +11,9 @@ export default function ToyProblem({ problem, setFilter }) {
   return (
     <div className="ToyProblemEntry">
       <div className="ToyProblemRow">
-        <h2 className="ToyProblemTitle">{name}</h2>
+        <Link to="/solve" state={{ problem }}>
+          <h2 className="ToyProblemTitle">{name}</h2>
+        </Link>
         <span
           className={`Difficulty ${difficulty}`}
           diff={difficulty}
