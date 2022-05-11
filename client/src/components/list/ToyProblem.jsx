@@ -37,7 +37,6 @@ export default function ToyProblem({ problem, setFilter }) {
             </button>
           ))}
         </span>
-        <button className="Comments" type="button">Comments</button>
       </div>
     </div>
   );
