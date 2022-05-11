@@ -24,7 +24,7 @@ module.exports = {
 
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
 
-  getUserData: ({ username }) => Users.findOne({ username: username }),
+  getUserData: ({ userId }) => Users.findOne({ username: userId }),
 
   createUser: (params) => Users.create({
     username: params.username,
@@ -37,7 +37,7 @@ module.exports = {
     lastDateCompleted: 0,
   }),
 
-  modifyUsers: ({ username }, query) => {
-    Users.findOneAndUpdate({ username: username }, query, { new: true });
+  modifyUsers: ({ userId }, query) => {
+    Users.findOneAndUpdate({ username: userId }, query, { new: true });
   },
 };

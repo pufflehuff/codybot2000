@@ -66,7 +66,10 @@ function ResponsiveAppBar() {
     } = parseJwt(response.credential);
     fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}/${JSON.stringify(email)}/${JSON.stringify(given_name)}/${JSON.stringify(family_name)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
       .then((result) => {
-        console.log(result);
+        return result.json()
+      })
+      .then((parsedData) => {
+        console.log(parsedData)
       })
       .catch((err) => {
         console.log(err);
