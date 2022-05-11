@@ -1,6 +1,7 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
+import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -36,6 +37,9 @@ function AttemptPrompt() {
 
   return (
     <div>
+      <div>
+        <SetTimer />
+      </div>
       <div className="playground">
         <Editor
           language="javascript"
