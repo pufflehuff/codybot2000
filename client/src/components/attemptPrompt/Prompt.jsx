@@ -12,8 +12,8 @@ export default function Prompt({ problem }) {
       <div>
         <h3>Examples:</h3>
         <ul>
-          {examples.map((example) => (
-            <li>
+          {examples.map((example, index) => (
+            <li key={index}>
               <b>Input: </b>
               {example.input}
               <b> Output: </b>
@@ -25,8 +25,8 @@ export default function Prompt({ problem }) {
       <div>
         <h3>Constraints:</h3>
         <ul>
-          {constraints.map((constraint) => (
-            <li>{constraint}</li>
+          {constraints.map((constraint, index) => (
+            <li key={index}>{constraint}</li>
           ))}
         </ul>
       </div>
@@ -35,9 +35,17 @@ export default function Prompt({ problem }) {
 }
 
 Prompt.propTypes = {
-  problem: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  prompt: PropTypes.string.isRequired,
-  constraints: PropTypes.array.isRequired,
-  examples: PropTypes.array.isRequired,
+  problem: PropTypes.object,
+  name: PropTypes.string,
+  prompt: PropTypes.string,
+  constraints: PropTypes.array,
+  examples: PropTypes.array,
+};
+
+Prompt.defaultProps = {
+  problem: {},
+  name: '',
+  prompt: '',
+  constraints: [],
+  examples: [],
 };
