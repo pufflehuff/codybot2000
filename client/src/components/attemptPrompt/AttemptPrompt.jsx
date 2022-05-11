@@ -29,9 +29,12 @@ const defaultProblem = {
 export default function AttemptPrompt() {
   const location = useLocation();
   let problem = defaultProblem;
-  if (location.state) {
+  if (location.state.problem) {
     problem = location.state.problem;
   }
+  // // THIS IS FOR CURRENT USER
+  // const { currentUserId } = location.state;
+  // console.log(currentUserId);
 
   const [html, setHtml] = useState(null);
   const [js, setJs] = useState('');
