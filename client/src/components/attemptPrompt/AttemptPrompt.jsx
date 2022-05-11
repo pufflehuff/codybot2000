@@ -78,7 +78,9 @@ export default function AttemptPrompt() {
           <Prompt problem={problem} />
         </div>
         <div className="result">
-          <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          <div className="editor-header">
+            <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          </div>
           <ControlledEditor
             value={html}
             className="code-mirror-wrapper"

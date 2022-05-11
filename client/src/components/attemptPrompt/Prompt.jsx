@@ -27,7 +27,11 @@ export default function Prompt({ problem }) {
         <h3>Constraints:</h3>
         <ul>
           {constraints.map((constraint, index) => (
-            <li key={index}>{constraint}</li>
+            <li key={index}>
+              <ReactMarkdown>
+                {constraint}
+              </ReactMarkdown>
+            </li>
           ))}
         </ul>
       </div>
