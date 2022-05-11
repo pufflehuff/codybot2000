@@ -8,6 +8,7 @@ import AddNewPrompt from './components/addPrompt/AddNewPrompt';
 import './Styles.css';
 import './components/list/ListStyles.css';
 import './components/addPrompt/AddPrompt.css';
+import './components/attemptPrompt/Attempt.css';
 
 reactDom.render(
   <BrowserRouter>
