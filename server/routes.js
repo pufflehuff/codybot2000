@@ -29,12 +29,27 @@ module.exports.userStats = (req, res) => {
   // username is the google identifier ID that is unique to each google account
   // - we can use it to identify a user
   const { username, email, first, last } = req.params;
-  console.log(`Username: ${username}`);
-  console.log(`email: ${email}`);
-  console.log(`first: ${first}`);
-  console.log(`last: ${last}`);
-  handlers.getUserData(username)
-    .then((data) => res.json(data))
+  handlers.getUserData(req.params)
+    .then((data) => {
+      // one day 86400000
+      if (!data) {
+        handlers.createUser(req.params)
+        .then((data) => res.json(data))
+        .catch((err) => res.status(500).json(err));
+      } else {
+        const date = Date.now();
+        // the amount of milliseconds in 24 hours
+        if ((date - data.lastDateCompleted) >= 86400000) {
+          handlers.modifyUsers(req.params, { streak: 0 })
+          .then((newData) => {
+            res.json(newData);
+          })
+          .catch((err) => res.status(500).json(err));
+        } else {
+          res.json(data);
+        }
+      }
+    })
     .catch((err) => res.status(500).json(err));
 };
 

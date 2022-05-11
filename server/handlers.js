@@ -1,4 +1,5 @@
-const Problems = require('../database/models/problems');
+/* eslint-disable object-shorthand */
+const { Problems, Users } = require('../database/models/schemas');
 
 module.exports = {
   problems: () => Problems.find({}),
@@ -23,8 +24,20 @@ module.exports = {
 
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
 
-  getUserData: (userId) => {
-    // query DB here with userID and hand back the stats
-    console.log(`In Handler UserID: ${userId}`);
+  getUserData: ({ username }) => Users.findOne({ username: username }),
+
+  createUser: (params) => Users.create({
+    username: params.username,
+    firstName: params.first,
+    lastName: params.last,
+    email: params.email,
+    problems: [],
+    submitted: [],
+    streak: 0,
+    lastDateCompleted: 0,
+  }),
+
+  modifyUsers: ({ username }, query) => {
+    Users.findOneAndUpdate({ username: username }, query, { new: true });
   },
 };
