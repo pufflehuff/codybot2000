@@ -1,16 +1,43 @@
 .PromptPage {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 .PromptPageLeft {
   width: 50%;
+  margin: 2em;
+  margin-left: 4em;
+}
+
+.playground {
+  height: 90vh;
+}
+.code-mirror-wrapper, .code-editor {
+  height: 45%;
+}
+
+.CodeMirror {
+  heihgt: 100%;
 }
 
 .PromptPageRight {
   width: 50%;
+  margin: 2em;
+  margin-right: 4em;
 }
 
 .PromptContainer {
   height: 500px;
   padding: 20px;
+}
+
+.editor-header {
+  margin: .5em;
+  margin-left: 1em;
+}
+
+.run {
+  margin-left: .5em;
 }
