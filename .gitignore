@@ -6,8 +6,4 @@ coverage/
 **/dist/*.png
 
 .env
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 package-lock.json
