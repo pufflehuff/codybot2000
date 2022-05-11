@@ -32,6 +32,9 @@ export default function AttemptPrompt() {
   if (location.state) {
     problem = location.state.problem;
   }
+  // THIS IS FOR CURRENT USER
+  const { currentUserId } = location.state;
+  console.log(currentUserId);
 
   const [html, setHtml] = useState(null);
   const [js, setJs] = useState('');
