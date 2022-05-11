@@ -38,7 +38,7 @@ const usersSchema = mongoose.Schema({
   lastDateCompleted: Number,
 }, { versionKey: false });
 
-const Problems = mongoose.model('problems', problemSchema);
+const Problems = mongoose.model('codybot', problemSchema);
 const Users = mongoose.model('users', usersSchema);
 
 module.exports = { Problems, Users };
