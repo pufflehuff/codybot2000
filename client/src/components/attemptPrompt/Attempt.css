@@ -11,15 +11,8 @@
   margin-left: 4em;
 }
 
-.playground {
-  height: 90vh;
-}
-.code-mirror-wrapper, .code-editor {
-  height: 45%;
-}
-
 .CodeMirror {
-  heihgt: 100%;
+  height: 37vh;
 }
 
 .PromptPageRight {
@@ -40,4 +33,11 @@
 
 .run {
   margin-left: .5em;
+}
+
+code {
+  background-color: #263238;
+  padding: .5em;
+  border-radius: .5em;
+  color: #A9CEF4;
 }
