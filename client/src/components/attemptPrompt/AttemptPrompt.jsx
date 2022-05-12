@@ -4,10 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-<<<<<<< HEAD
 import SetTimer from '../timer/SetTimer';
-=======
->>>>>>> main
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -75,7 +72,7 @@ export default function AttemptPrompt() {
       args = args.join(', ');
       const test = `${name}(${args});`;
 
-      passed = `${eval(`${js + test}`)}` !== example.output;
+      passed = `${eval(`${js + test}`)}` === example.output;
     });
     setPassed(passed);
     setShow(true);
@@ -128,7 +125,7 @@ export default function AttemptPrompt() {
       </div>
       <Modal
         open={show}
-        onClose={() => setShow(false)}
+        onClick={() => setShow(false)}
       >
         <div className="PromptSubmit">
           <Confetti
