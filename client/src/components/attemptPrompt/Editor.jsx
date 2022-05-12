@@ -3,6 +3,7 @@ import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
+import Confetti from 'react-confetti';
 import PropTypes from 'prop-types';
 
 export default function Editor(props) {
@@ -12,15 +13,11 @@ export default function Editor(props) {
     value,
     onChange,
     handleClick,
+    handleSubmit,
   } = props;
 
   const handleChange = (editor, data, val) => {
     onChange(val);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(value);
   };
 
   return (
@@ -52,4 +49,5 @@ Editor.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
