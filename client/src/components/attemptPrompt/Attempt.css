@@ -29,6 +29,7 @@
 .editor-header {
   margin: .5em;
   margin-left: 1em;
+  margin-top: 1em;
 }
 
 .run {
@@ -36,7 +37,7 @@
 }
 
 code {
-  background-color: #263238;
+  background-color: #1b2328;
   padding: .5em;
   border-radius: .5em;
   color: #A9CEF4;
