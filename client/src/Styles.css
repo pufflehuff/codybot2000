@@ -10,10 +10,12 @@ body {
 
 a {
   text-decoration: none;
+  color: #eab464;
 }
 
 /* Main Button */
 button {
+  /* margin: .5em; */
   padding-top: .5%;
   padding-bottom: .5%;
   padding-left: 3%;
@@ -30,8 +32,8 @@ button {
 }
 
 img {
-  max-width: 7em;
-  max-height: 7em;
+  max-width: 11.5vh;
+  max-height: 11.5vh;
 }
 
 .rating {
