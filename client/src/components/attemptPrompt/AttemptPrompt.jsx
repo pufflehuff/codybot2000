@@ -16,6 +16,23 @@ import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 import Prompt from './Prompt';
 
+let params;
+let name;
+
+const buildText = (problem) => {
+  console.log(problem);
+  params = problem.examples[0].input.split(', ');
+  params = params.map((param) => param.slice(0, param.indexOf(' ')));
+  console.log(problem.name);
+
+  name = problem.name.split(' ', 2);
+  name[0] = name[0].toLowerCase();
+  name = name.join('');
+
+  return (`function ${name}(${params.join(', ')}) {`
+    + `\n // Your Code Here\n\n};\n\n${name}(/* input */);`);
+};
+
 export default function AttemptPrompt() {
   const location = useLocation();
   const { problem } = location.state;
@@ -36,8 +53,13 @@ export default function AttemptPrompt() {
 toyProblem(/* input */);`);
 
   const [html, setHtml] = useState(null);
+<<<<<<< HEAD
   const [js, setJs] = useState(defaultText);
   const [testsPassed, setPassed] = useState(true);
+=======
+  const [js, setJs] = useState(buildText(problem));
+  const [testsPassed, setPassed] = useState(false);
+>>>>>>> main
   const [show, setShow] = useState(false);
 
   const handleClick = (e) => {
@@ -69,6 +91,7 @@ toyProblem(/* input */);`);
     let passed = false;
 
     problem.examples.forEach((example) => {
+<<<<<<< HEAD
       let args = example.input.split(',');
       args = args.map((arg) => arg.slice(arg.indexOf('=') + 2));
       args = args.join(', ');
@@ -80,6 +103,17 @@ toyProblem(/* input */);`);
       console.log(eval(`${js + test}`));
     });
     setPassed(passed);
+=======
+      let args = example.input.split(', ');
+      args = args.map((arg) => arg.slice(arg.indexOf('= ') + 2));
+      args = args.join(', ');
+      const test = `${name}(${args});`;
+
+      passed = `${eval(`${js + test}`)}` === example.output;
+      console.log(typeof example.output);
+    });
+    setPassed(true);
+>>>>>>> main
   };
 
   return (
@@ -95,11 +129,15 @@ toyProblem(/* input */);`);
             handleSubmit={handleSubmit}
           />
         </div>
+<<<<<<< HEAD
       </div>
       <div className="PromptPageRight">
         <div className="PromptContainer">
           <Prompt problem={problem} />
         </div>
+        <SetTimer />
+=======
+>>>>>>> 3ddb08d6bf25f64db7eb39f3e2cf1a0aa5e6704b
         <div className="result">
           <div className="editor-header">
             <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
@@ -115,6 +153,7 @@ toyProblem(/* input */);`);
           />
         </div>
       </div>
+<<<<<<< HEAD
       <Modal open={testsPassed}>
       <div className="PromptSubmit">
         <Confetti
@@ -126,6 +165,27 @@ toyProblem(/* input */);`);
         <h1>Great Job! You Passed!</h1>
       </div>
     </Modal>
+=======
+<<<<<<< HEAD
+      <Modal open={testsPassed}>
+        <div className="PromptSubmit">
+          <Confetti
+            recycle={false}
+            run={testsPassed}
+            numberOfPieces={1000}
+            gravity={2}
+          />
+          <h1>Great Job! You Passed!</h1>
+        </div>
+      </Modal>
+=======
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
+          <Prompt problem={problem} />
+        </div>
+      </div>
+>>>>>>> 3ddb08d6bf25f64db7eb39f3e2cf1a0aa5e6704b
+>>>>>>> main
     </div>
   );
 }
