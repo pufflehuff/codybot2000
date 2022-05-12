@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -75,8 +74,14 @@ export default function AttemptPrompt() {
       passed = `${eval(`${js + test}`)}` !== example.output;
     });
     setPassed(passed);
+    setShow(true);
   };
-
+  let modalText;
+  if (testsPassed) {
+    modalText = <h1>Great Job! You Passed!</h1>;
+  } else {
+    modalText = <h1>Oh No! Review and Try Again Later</h1>;
+  }
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
@@ -95,7 +100,6 @@ export default function AttemptPrompt() {
         <div className="PromptContainer">
           <Prompt problem={problem} />
         </div>
-        <SetTimer />
         <div className="result">
           <div className="editor-header">
             <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
@@ -111,7 +115,10 @@ export default function AttemptPrompt() {
           />
         </div>
       </div>
-      <Modal open={testsPassed}>
+      <Modal
+        open={show}
+        onClose={() => setShow(false)}
+      >
         <div className="PromptSubmit">
           <Confetti
             recycle={false}
@@ -119,7 +126,7 @@ export default function AttemptPrompt() {
             numberOfPieces={1000}
             gravity={2}
           />
-          <h1>Great Job! You Passed!</h1>
+          {modalText}
         </div>
       </Modal>
     </div>
