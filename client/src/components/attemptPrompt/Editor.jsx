@@ -24,11 +24,7 @@ export default function Editor(props) {
     <div className="code-editor">
       <div className="editor-header">
         {displayName}
-<<<<<<< HEAD
-        <button type="button" className="run" onClick={(e) => handleClick(e)}>Run</button>
-=======
         <button type="button" className="run" onClick={(e) => handleClick(e)}>Run Code</button>
->>>>>>> main
         <button type="button" onClick={(e) => handleSubmit(e)}>Submit</button>
       </div>
       <ControlledEditor
