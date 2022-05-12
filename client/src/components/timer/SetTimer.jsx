@@ -7,7 +7,7 @@ export default function SetTimer({ expire }) {
   const [time, setTime] = useState(new Date());
   const [showConutdown, setShowCountdown] = useState(false);
   return (
-    <div>
+    <div className="PromptTimer">
       {showConutdown
         ? <Timer expiryTimestamp={time} setShowCountdown={setShowCountdown} expire={expire} />
         : (
