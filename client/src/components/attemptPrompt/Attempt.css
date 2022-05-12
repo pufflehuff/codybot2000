@@ -1,16 +1,52 @@
 .PromptPage {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 .PromptPageLeft {
   width: 50%;
+  margin: 2em;
+  margin-left: 4em;
+}
+
+.CodeMirror {
+  height: 37vh;
 }
 
 .PromptPageRight {
   width: 50%;
+  margin: 2em;
+  margin-right: 4em;
 }
 
 .PromptContainer {
   height: 500px;
   padding: 20px;
+}
+
+.editor-header {
+  margin: .5em;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.run {
+  margin-left: .5em;
+}
+
+code {
+  background-color: #1b2328;
+  padding: .5em;
+  border-radius: .5em;
+  color: #A9CEF4;
+}
+
+.PromptSubmit {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
