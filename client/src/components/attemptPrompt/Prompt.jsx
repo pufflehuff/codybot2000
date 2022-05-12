@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+// import axios from 'axios';
 
 export default function Prompt({ problem }) {
+  const [rating, setRating] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [reported, setReported] = useState(false);
   // eslint-disable-next-line object-curly-newline
   const { name, prompt, constraints, examples } = problem;
+
+  function handleSubmit() {
+    setSubmitted(true);
+    // axios.put('/api/rating', {
+    // problem id & rating here
+    // })
+  }
+
+  function handleReport() {
+    setReported(true);
+    // axios.put('/api/reportproblem')
+    //   .catch((err) => console.log(err));
+  }
 
   return (
     <div>
       <h2>{name}</h2>
+      <input
+        className="rating RatingNew"
+        style={{ display: 'inline-block' }}
+        min="0"
+        max="5"
+        step="0.5"
+        type="range"
+        value={rating}
+        onChange={submitted ? null : (e) => setRating(Math.ceil(e.target.value))}
+      />
+      {rating === 0 || submitted ? null
+        : <button type="button" onClick={() => handleSubmit()}>Submit</button>}
       <ReactMarkdown>{prompt}</ReactMarkdown>
       <div>
         <h3>Examples:</h3>
@@ -35,6 +64,8 @@ export default function Prompt({ problem }) {
           ))}
         </ul>
       </div>
+      {reported ? null
+        : <button type="button" onClick={() => handleReport()}>report problem</button>}
     </div>
   );
 }
