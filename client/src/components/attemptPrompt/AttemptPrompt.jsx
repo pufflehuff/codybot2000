@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-// import SetTimer from '../timer/SetTimer';
+import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -77,6 +77,12 @@ toyProblem(/* input */);`);
     setPassed(passed);
     setShow(true);
   };
+
+  const timeExpire = () => {
+    // eslint-disable-next-line no-alert
+    alert('You have run out of time');
+  };
+
   let modalText;
   if (testsPassed) {
     modalText = <h1>Great Job! You Passed!</h1>;
@@ -99,6 +105,7 @@ toyProblem(/* input */);`);
         <div className="result">
           <div className="editor-header">
             <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+            <SetTimer expire={timeExpire} />
           </div>
           <ControlledEditor
             value={html}
