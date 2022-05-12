@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
@@ -15,7 +16,7 @@ export default function Prompt({ problem }) {
 
     console.log(problem);
 
-    let newRating = problem.rating;
+    const newRating = problem.rating;
     newRating[rating] += 1;
 
     axios.put(`/api/updateRating/${problem._id}`, newRating)
