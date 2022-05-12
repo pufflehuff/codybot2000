@@ -79,3 +79,7 @@ img {
   opacity: 1;
   width: 1px;
 }
+
+.streak-box {
+  display: flex;
+}
