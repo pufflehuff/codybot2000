@@ -12,8 +12,14 @@ const problemSchema = mongoose.Schema({
   constraints: [String],
   tags: [String],
   difficulty: String,
-  rating: Number,
-  numRatings: Number,
+  rating: {
+    1: Number,
+    2: Number,
+    3: Number,
+    4: Number,
+    5: Number,
+    _id: false,
+  },
   timestamp: String,
   author: String,
 }, { versionKey: false });
