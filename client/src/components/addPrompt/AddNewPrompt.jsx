@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function AddNewPrompt() {
+  // THIS IS FOR CURRENT USER
+  const location = useLocation();
+  const { currentUserId } = location.state;
+  console.log(currentUserId);
+  // THIS IS FOR CURRENT USER
   const [promptName, setPromptName] = useState('');
   const [promptBody, setPromptBody] = useState('');
   const [testsBody, setTestsBody] = useState('');

@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
+import StarRating from '../list/StarRating';
 
 export default function Prompt({ problem }) {
   // eslint-disable-next-line object-curly-newline
+  const [rating, setRating] = useState(null);
   const { name, prompt, constraints, examples } = problem;
 
   return (
     <div>
       <h2>{name}</h2>
-      <div>{prompt}</div>
+      <StarRating rating={rating} onClick={() => setRating()} special="NewRating" />
+      <ReactMarkdown>{prompt}</ReactMarkdown>
       <div>
         <h3>Examples:</h3>
         <ul>
@@ -26,7 +30,11 @@ export default function Prompt({ problem }) {
         <h3>Constraints:</h3>
         <ul>
           {constraints.map((constraint, index) => (
-            <li key={index}>{constraint}</li>
+            <li key={index}>
+              <ReactMarkdown>
+                {constraint}
+              </ReactMarkdown>
+            </li>
           ))}
         </ul>
       </div>

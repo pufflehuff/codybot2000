@@ -18,21 +18,26 @@ import MenuItem from '@mui/material/MenuItem';
 // eslint-disable-next-line no-unused-vars
 import Logo from 'Assets/Darwin.png';
 import AllModal from './AllModal';
+import Context from './Context';
 
 function ResponsiveAppBar() {
   // eslint-disable-next-line no-unused-vars
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [loggedInUser, setLoggedInUser] = React.useState('');
-  // let greeting;
-  // use once current user gets passed in as prop
-  // if (currentUser === null) {
-  //   greeting = 'Welcome to Codybot2000!';
-  // } else {
-  //   greeting = `Welcome ${currentUser}`;
-  // }
+  const [loggedInUser, setLoggedInUser] = React.useState('Anonymous');
+  const [currentUserId, setCurrentUserId] = React.useState('');
+  const [currentStreak, setCurrentStreak] = React.useState(0);
+  const [problemsAuthored, setProblemsAuthored] = React.useState([]);
+  const [submissions, setSubmissions] = React.useState([]);
+  const [filtered] = React.useContext(Context);
 
-  const greeting = 'Welcome to Codybot2000!';
+  let greeting;
+  if (loggedInUser === 'Anonymous') {
+    greeting = 'Welcome to Codybot2000!';
+  } else {
+    greeting = `Welcome ${loggedInUser}`;
+  }
+
 
   // const pages = ['Create a Problem'];
   const settings = ['Login', 'Statistics', 'Logout'];
@@ -66,11 +71,29 @@ function ResponsiveAppBar() {
     } = parseJwt(response.credential);
     fetch(`http://localhost:3000/api/userStats/${JSON.stringify(sub)}/${JSON.stringify(email)}/${JSON.stringify(given_name)}/${JSON.stringify(family_name)}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
       .then((result) => {
-        console.log(result);
+        return result.json()
+      })
+      .then((parsedData) => {
+        console.log(parsedData)
+        let fullName = JSON.parse(parsedData.firstName) + ' ' + JSON.parse(parsedData.lastName);
+        setLoggedInUser(fullName);
+        setCurrentStreak(parsedData.streak);
+        setProblemsAuthored(parsedData.problems);
+        setSubmissions(parsedData.submitted);
+        setCurrentUserId(parsedData.username);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const onLogoutClick = () => {
+    window.google.accounts.id.disableAutoSelect();
+    setLoggedInUser('Anonymous');
+    setCurrentStreak(0);
+    setProblemsAuthored([]);
+    setSubmissions([]);
+    console.log('You have been successfully logged out!');
   };
 
   return (
@@ -92,7 +115,7 @@ function ResponsiveAppBar() {
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to="/">
+            <Link to="/" state={{currentUserId: currentUserId}}>
               <Button
                 key="list"
                 onClick={handleCloseNavMenu}
@@ -101,7 +124,7 @@ function ResponsiveAppBar() {
                 LIST PROBLEMS
               </Button>
             </Link>
-            <Link to="solve">
+            <Link to="solve" state={{currentUserId: currentUserId, problem: filtered[Math.floor(Math.random() * filtered.length)]}}>
               <Button
                 key="solve"
                 onClick={handleCloseNavMenu}
@@ -110,7 +133,7 @@ function ResponsiveAppBar() {
                 SOLVE A PROBLEM
               </Button>
             </Link>
-            <Link to="add">
+            <Link to="add" state={{currentUserId: currentUserId}}>
               <Button
                 key="add"
                 onClick={handleCloseNavMenu}
@@ -124,7 +147,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={loggedInUser.length ? loggedInUser : ''} />
+                <Avatar alt={loggedInUser}>{loggedInUser[0]}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -153,7 +176,6 @@ function ResponsiveAppBar() {
                         data-callback="handleCredentialResponse"
                         data-login_uri="http://localhost:3000"
                         data-auto_prompt="false"
-                        // data-ux_mode="redirect"
                       />
                       <div
                         className="g_id_signin"
@@ -167,7 +189,7 @@ function ResponsiveAppBar() {
                     </div>
                   );
                 }
-                return <AllModal key={setting} type={setting} />;
+                return <AllModal onLogoutClick={onLogoutClick} loggedInUser={loggedInUser} currentStreak={currentStreak} problemsAuthored={problemsAuthored} submissions={submissions} key={setting} type={setting} />;
               })}
             </Menu>
           </Box>
