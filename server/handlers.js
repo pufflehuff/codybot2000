@@ -2,7 +2,7 @@
 const { Problems, Users } = require('../database/models/schemas');
 
 module.exports = {
-  problems: () => Problems.find({}),
+  problems: () => Problems.find({}).sort({ timestamp: 'desc' }),
   problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
@@ -15,14 +15,30 @@ module.exports = {
       difficulty: body.difficulty,
       rating: body.rating,
       numRatings: body.numRatings,
-      timestamp: body.timestamp,
+      timestamp: new Date(Date.now()),
       author: body.author,
     });
 
     return Problems.create(newProblem);
   },
 
-  modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
+  addProblemToUser: (userId, problemObj) => Problems.findOneAndUpdate({
+    username: userId,
+  }, {
+    $push: {
+      submitted: problemObj,
+    },
+  }),
+
+  updateRating: (problemId, ratingsObj) => Problems.findOneAndUpdate(problemId, ratingsObj, {
+    new: true,
+  }),
+
+  reportProblem: (problemId, reportObj) => Problems.findOneAndUpdate(problemId, reportObj, {
+    new: true,
+  }),
+
+  modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body, { new: true }),
 
   getUserData: ({ userID }) => Users.findOne({ username: userID }),
 
@@ -37,7 +53,7 @@ module.exports = {
     lastDateCompleted: 0,
   }),
 
-  modifyUsers: ({ userID }, query) => {
-    Users.findOneAndUpdate({ username: userID }, query, { new: true });
-  },
+  updateStreak: ({ userID }, streakObj) => Users.findOneAndUpdate({
+    username: userID,
+  }, streakObj, { new: true }),
 };

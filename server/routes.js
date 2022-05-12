@@ -21,7 +21,13 @@ module.exports.comments = (req, res) => {
 
 module.exports.createProblem = (req, res) => {
   handlers.createProblem(req, res)
-    .then((data) => res.json(data))
+    .then((data) => {
+      if (req.params) {
+        module.exports.addProblemToUser(req.params, { problemId: data._id, problemName: data.name})
+        .then((data) => res.json(data))
+        .catch((err) => res.status(500).json(err));
+      } else res.json(data)
+    })
     .catch((err) => res.status(500).json(err));
 };
 
@@ -40,7 +46,7 @@ module.exports.userStats = (req, res) => {
         const date = Date.now();
         // the amount of milliseconds in 24 hours
         if ((date - data.lastDateCompleted) >= 86400000) {
-          handlers.modifyUsers(req.params, { streak: 0 })
+          handlers.updateStreak(req.params, { streak: 0 })
           .then((newData) => {
             res.json(newData);
           })
@@ -50,6 +56,18 @@ module.exports.userStats = (req, res) => {
         }
       }
     })
+    .catch((err) => res.status(500).json(err));
+};
+
+module.exports.updateRating = (req, res) => {
+  handlers.updateRating(req.params, req.body)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
+
+module.exports.reportProblem = (req, res) => {
+  handlers.updateRating(req.params, req.body)
+    .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };
 
