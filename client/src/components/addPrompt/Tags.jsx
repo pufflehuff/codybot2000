@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React from 'react';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
-export default function Tags({ tags, setTags }) {
+export default function Tags({ tags, formTags, setTags }) {
   return (
     <Stack spacing={3} sx={{ width: 500 }}>
       <Autocomplete
@@ -16,14 +16,14 @@ export default function Tags({ tags, setTags }) {
         freeSolo
         renderTags={(value, getTagProps) => value.map((option, index) => {
           let exists = false;
-          tags.forEach((tag) => {
-            if (tag.title === option) {
+          formTags.forEach((tag) => {
+            if (tag === option) {
               exists = true;
             }
           });
           if (!exists) {
-            const arr = tags;
-            arr.push({ title: option });
+            const arr = formTags;
+            arr.push(option);
             setTags(arr);
           }
           return (

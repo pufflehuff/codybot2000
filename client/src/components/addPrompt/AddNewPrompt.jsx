@@ -9,15 +9,29 @@ export default function AddNewPrompt() {
   // THIS IS FOR CURRENT USER
   const [promptName, setPromptName] = useState('');
   const [promptBody, setPromptBody] = useState('');
-  const [testsBody, setTestsBody] = useState('');
   const [dificulty, setDificulty] = useState('');
   const [constraints, setConstraints] = useState('');
-  const [tags, setTags] = useState([
+  const [formTags, setFormTags] = useState(['User created']);
+  const [tags] = useState([
     { title: 'User created' },
+    { title: 'Array' },
+    { title: 'Hash Table' },
+    { title: 'Dynamic Programming' },
+    { title: 'Prefix Sum' },
+    { title: 'Divide and Conquer' },
+    { title: 'Binary Search' },
+    { title: 'Sorting' },
+    { title: 'Two Pointers' },
+    { title: 'Memoization' },
+    { title: 'Breath-First Search' },
+    { title: 'String' },
+    { title: 'Rolling Hash' },
+    { title: 'Sliding Window' },
+    { title: 'BitMask' },
+    { title: 'Bit Manipulation' },
   ]);
 
   const handleSubmit = () => {
-    console.log(promptName, promptBody, testsBody);
     // examples: body.examples,
     // constraints: body.constraints,
     // tags: body.tags,
@@ -28,6 +42,7 @@ export default function AddNewPrompt() {
       name: promptName,
       prompt: promptBody,
       dificulty,
+      tags: formTags,
       constraints,
       rating: 0,
       numRatings: 0,
@@ -62,12 +77,9 @@ export default function AddNewPrompt() {
             <option>Hard</option>
           </select>
         </label>
-        Constraints
-
-        <Tags tags={tags} setTags={setTags} />
-
+        <Tags tags={tags} formTags={formTags} setTags={setFormTags} />
         <label htmlFor="promptCOnstraints" className="PromptLabel">
-
+          Constraints
           <input
             type="text"
             name="propmptConstraints"
@@ -90,16 +102,11 @@ export default function AddNewPrompt() {
           />
         </label>
 
-        <label htmlFor="testsBody" className="PromptLabel">
-          Tests Body
-          <textarea
-            type="textarea"
-            name="testsBody"
-            onChange={(event) => {
-              setTestsBody(event.target.value);
-            }}
-          />
+        <label htmlFor="promptExamples" className="PromptLabel">
+          Prompt Examples
+          <input type="text" />
         </label>
+
       </div>
 
       <div className="PromptRow">
