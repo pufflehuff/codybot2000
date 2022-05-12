@@ -8,30 +8,12 @@ import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 import Prompt from './Prompt';
 
-const defaultProblem = {
-  name: 'Two Sum',
-  prompt: 'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.',
-  tags: ['math', 'algo'],
-  examples: [
-    { input: 'nums = [2,7,11,15], target = 9', output: '[0, 1]' },
-    { input: 'nums = [3,2,4], target = 6', output: '[1,2]' },
-    { input: 'nums = [3,3], target = 6', output: '[0,1]' },
-  ],
-  constraints: ['`2 <= nums.length <= 10^4`', '`-10^9 <= nums[i] <= 10^9`', '`-10^9 <= target <= 10^9`', '*Only one valid answer exists*'],
-  difficulty: 'easy',
-  reported_count: 2,
-  rating: 3.5,
-  ratings_count: 16,
-  timestamp: '2022-5-6',
-  author: 'leetcode',
-};
-
 export default function AttemptPrompt() {
   const location = useLocation();
-  let problem = defaultProblem;
-  if (location.state) {
-    problem = location.state.problem;
-  }
+  const { problem } = location.state;
+  // // THIS IS FOR CURRENT USER
+  // const { currentUserId } = location.state;
+  // console.log(currentUserId);
 
   const [html, setHtml] = useState(null);
   const [js, setJs] = useState('');
@@ -72,13 +54,10 @@ export default function AttemptPrompt() {
             handleClick={handleClick}
           />
         </div>
-      </div>
-      <div className="PromptPageRight">
-        <div className="PromptContainer">
-          <Prompt problem={problem} />
-        </div>
         <div className="result">
-          <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          <div className="editor-header">
+            <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          </div>
           <ControlledEditor
             value={html}
             className="code-mirror-wrapper"
@@ -88,6 +67,11 @@ export default function AttemptPrompt() {
               readOnly: true,
             }}
           />
+        </div>
+      </div>
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
+          <Prompt problem={problem} />
         </div>
       </div>
     </div>
