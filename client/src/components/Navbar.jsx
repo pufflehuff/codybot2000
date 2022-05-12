@@ -18,6 +18,7 @@ import MenuItem from '@mui/material/MenuItem';
 // eslint-disable-next-line no-unused-vars
 import Logo from 'Assets/Darwin.png';
 import AllModal from './AllModal';
+import Context from './Context';
 
 function ResponsiveAppBar() {
   // eslint-disable-next-line no-unused-vars
@@ -28,6 +29,8 @@ function ResponsiveAppBar() {
   const [currentStreak, setCurrentStreak] = React.useState(0);
   const [problemsAuthored, setProblemsAuthored] = React.useState([]);
   const [submissions, setSubmissions] = React.useState([]);
+  const [filtered] = React.useContext(Context);
+
   let greeting;
   if (loggedInUser === 'Anonymous') {
     greeting = 'Welcome to Codybot2000!';
@@ -121,7 +124,7 @@ function ResponsiveAppBar() {
                 LIST PROBLEMS
               </Button>
             </Link>
-            <Link to="solve" state={{currentUserId: currentUserId}}>
+            <Link to="solve" state={{currentUserId: currentUserId, problem: filtered[Math.floor(Math.random() * filtered.length)]}}>
               <Button
                 key="solve"
                 onClick={handleCloseNavMenu}
