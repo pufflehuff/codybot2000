@@ -1,0 +1,16 @@
+.PromptPage {
+  display: flex;
+}
+
+.PromptPageLeft {
+  width: 50%;
+}
+
+.PromptPageRight {
+  width: 50%;
+}
+
+.PromptContainer {
+  height: 500px;
+  padding: 20px;
+}

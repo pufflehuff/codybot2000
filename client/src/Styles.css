@@ -1,10 +1,15 @@
 /* Main Body */
 body {
-  background-color: #2a383c;
+  background-color: #36494E;
+  /* #2a383c; */
   color: #eab464;
   text-shadow: -.05em .05em #000;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Main Button */
@@ -73,4 +78,8 @@ img {
   box-shadow: calc(0rem - var(--length)) 0 0 var(--length) goldenrod;
   opacity: 1;
   width: 1px;
+}
+
+.streak-box {
+  display: flex;
 }

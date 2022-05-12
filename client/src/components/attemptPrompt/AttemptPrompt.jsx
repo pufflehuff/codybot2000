@@ -1,7 +1,11 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { useLocation, Link } from 'react-router-dom';
 import styled from 'styled-components';
+=======
+import { useLocation } from 'react-router-dom';
+>>>>>>> main
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
@@ -11,23 +15,6 @@ import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 import Prompt from './Prompt';
-
-const Page = styled.div`
-  display: flex;
-`;
-
-const Left = styled.div`
-  width: 50%;
-`;
-
-const Right = styled.div`
-  width: 50%;
-`;
-
-const PromptContainer = styled.div`
-  height: 500px;
-  padding: 20px;
-`;
 
 const defaultProblem = {
   name: 'Two Sum',
@@ -50,9 +37,12 @@ const defaultProblem = {
 export default function AttemptPrompt() {
   const location = useLocation();
   let problem = defaultProblem;
-  if (location.state) {
+  if (location.state.problem) {
     problem = location.state.problem;
   }
+  // // THIS IS FOR CURRENT USER
+  // const { currentUserId } = location.state;
+  // console.log(currentUserId);
 
   // Add parameters to default function
   let params = problem.examples[0].input.split(', ');
@@ -114,19 +104,8 @@ toyProblem(/* input */);`);
   };
 
   return (
-    <Page>
-      <Modal open={testsPassed}>
-        <div className="PromptSubmit">
-          <Confetti
-            recycle={false}
-            run={testsPassed}
-            numberOfPieces={1000}
-            gravity={2}
-          />
-          <h1>Great Job! You Passed!</h1>
-        </div>
-      </Modal>
-      <Left className="ToyProblemLeft">
+    <div className="PromptPage">
+      <div className="PromptPageLeft">
         <div className="playground">
           <Editor
             language="javascript"
@@ -137,13 +116,15 @@ toyProblem(/* input */);`);
             handleSubmit={handleSubmit}
           />
         </div>
-      </Left>
-      <Right className="ToyProblemRight">
-        <PromptContainer>
+      </div>
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
           <Prompt problem={problem} />
-        </PromptContainer>
+        </div>
         <div className="result">
-          <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          <div className="editor-header">
+            <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
+          </div>
           <ControlledEditor
             value={html}
             className="code-mirror-wrapper"
@@ -154,7 +135,18 @@ toyProblem(/* input */);`);
             }}
           />
         </div>
-      </Right>
-    </Page>
+      </div>
+      <Modal open={testsPassed}>
+      <div className="PromptSubmit">
+        <Confetti
+          recycle={false}
+          run={testsPassed}
+          numberOfPieces={1000}
+          gravity={2}
+        />
+        <h1>Great Job! You Passed!</h1>
+      </div>
+    </Modal>
+    </div>
   );
 }

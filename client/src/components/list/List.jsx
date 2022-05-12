@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import ToyProblem from './ToyProblem';
 
@@ -7,6 +8,11 @@ export default function List() {
   const [problems, setProblems] = useState([]);
   const [display, setDisplay] = useState([]);
   const [filter, setFilter] = useState('');
+  // // THIS IS FOR CURRENT USER
+  // const location = useLocation();
+  // const { currentUserId } = location.state;
+  // console.log(currentUserId);
+  // // THIS IS FOR CURRENT USER
 
   useEffect(() => {
     axios.get('/api/problems')
