@@ -4,7 +4,6 @@ import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
-import Confetti from 'react-confetti';
 import PropTypes from 'prop-types';
 
 export default function Editor(props) {

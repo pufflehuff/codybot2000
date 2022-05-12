@@ -1,15 +1,10 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { useLocation, Link } from 'react-router-dom';
-import styled from 'styled-components';
-=======
 import { useLocation } from 'react-router-dom';
->>>>>>> main
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-import SetTimer from '../timer/SetTimer';
+// import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -55,11 +50,15 @@ toyProblem(/* input */);`);
   const [html, setHtml] = useState(null);
 <<<<<<< HEAD
   const [js, setJs] = useState(defaultText);
+<<<<<<< HEAD
   const [testsPassed, setPassed] = useState(true);
 =======
   const [js, setJs] = useState(buildText(problem));
   const [testsPassed, setPassed] = useState(false);
 >>>>>>> main
+=======
+  const [testsPassed, setPassed] = useState(false);
+>>>>>>> 1e3783e90ffc0953440b43f0d952780915738f42
   const [show, setShow] = useState(false);
 
   const handleClick = (e) => {
@@ -103,6 +102,7 @@ toyProblem(/* input */);`);
       console.log(eval(`${js + test}`));
     });
     setPassed(passed);
+<<<<<<< HEAD
 =======
       let args = example.input.split(', ');
       args = args.map((arg) => arg.slice(arg.indexOf('= ') + 2));
@@ -114,8 +114,16 @@ toyProblem(/* input */);`);
     });
     setPassed(true);
 >>>>>>> main
+=======
+    setShow(true);
+>>>>>>> 1e3783e90ffc0953440b43f0d952780915738f42
   };
-
+  let modalText;
+  if (testsPassed) {
+    modalText = <h1>Great Job! You Passed!</h1>;
+  } else {
+    modalText = <h1>Oh No! Review and Try Again Later</h1>;
+  }
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
@@ -154,6 +162,7 @@ toyProblem(/* input */);`);
         </div>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Modal open={testsPassed}>
       <div className="PromptSubmit">
         <Confetti
@@ -168,6 +177,12 @@ toyProblem(/* input */);`);
 =======
 <<<<<<< HEAD
       <Modal open={testsPassed}>
+=======
+      <Modal
+        open={show}
+        onClose={() => setShow(false)}
+      >
+>>>>>>> 1e3783e90ffc0953440b43f0d952780915738f42
         <div className="PromptSubmit">
           <Confetti
             recycle={false}
@@ -175,17 +190,26 @@ toyProblem(/* input */);`);
             numberOfPieces={1000}
             gravity={2}
           />
+<<<<<<< HEAD
           <h1>Great Job! You Passed!</h1>
         </div>
       </Modal>
 =======
+=======
+          {modalText}
+        </div>
+      </Modal>
+>>>>>>> 1e3783e90ffc0953440b43f0d952780915738f42
       <div className="PromptPageRight">
         <div className="PromptContainer">
           <Prompt problem={problem} />
         </div>
       </div>
+<<<<<<< HEAD
 >>>>>>> 3ddb08d6bf25f64db7eb39f3e2cf1a0aa5e6704b
 >>>>>>> main
+=======
+>>>>>>> 1e3783e90ffc0953440b43f0d952780915738f42
     </div>
   );
 }
