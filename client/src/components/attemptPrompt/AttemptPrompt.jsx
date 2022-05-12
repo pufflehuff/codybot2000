@@ -4,12 +4,26 @@ import { useLocation } from 'react-router-dom';
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-// import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
 import Editor from './Editor';
 import Prompt from './Prompt';
+
+let params;
+let name;
+
+const buildText = (problem) => {
+  params = problem.examples[0].input.split(', ');
+  params = params.map((param) => param.slice(0, param.indexOf(' ')));
+
+  name = problem.name.split(' ', 2);
+  name[0] = name[0].toLowerCase();
+  name = name.join('');
+
+  return (`function ${name}(${params.join(', ')}) {`
+    + `\n // Your Code Here\n\n};\n\n${name}(/* input */);`);
+};
 
 export default function AttemptPrompt() {
   const location = useLocation();
@@ -18,20 +32,8 @@ export default function AttemptPrompt() {
   // const { currentUserId } = location.state;
   // console.log(currentUserId);
 
-  // Add parameters to default function
-  let params = problem.examples[0].input.split(', ');
-  params = params.map((param) => param.slice(0, param.indexOf(' ')));
-
-  const defaultText = (
-    `function toyProblem(${params.join(', ')}) {
-  // Your Code Here
-
-};
-
-toyProblem(/* input */);`);
-
   const [html, setHtml] = useState(null);
-  const [js, setJs] = useState(defaultText);
+  const [js, setJs] = useState(buildText(problem));
   const [testsPassed, setPassed] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -64,15 +66,12 @@ toyProblem(/* input */);`);
     let passed = false;
 
     problem.examples.forEach((example) => {
-      let args = example.input.split(',');
-      args = args.map((arg) => arg.slice(arg.indexOf('=') + 2));
+      let args = example.input.split(', ');
+      args = args.map((arg) => arg.slice(arg.indexOf('= ') + 2));
       args = args.join(', ');
-      const test = `toyProblem(${args});`;
+      const test = `${name}(${args});`;
 
-      passed = `${eval(`${js + test}`)}` === problem.output;
-
-      console.log(js + test);
-      console.log(eval(`${js + test}`));
+      passed = `${eval(`${js + test}`)}` !== example.output;
     });
     setPassed(passed);
     setShow(true);
@@ -95,6 +94,11 @@ toyProblem(/* input */);`);
             handleClick={handleClick}
             handleSubmit={handleSubmit}
           />
+        </div>
+      </div>
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
+          <Prompt problem={problem} />
         </div>
         <div className="result">
           <div className="editor-header">
@@ -125,11 +129,6 @@ toyProblem(/* input */);`);
           {modalText}
         </div>
       </Modal>
-      <div className="PromptPageRight">
-        <div className="PromptContainer">
-          <Prompt problem={problem} />
-        </div>
-      </div>
     </div>
   );
 }
