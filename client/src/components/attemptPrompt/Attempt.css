@@ -42,3 +42,11 @@ code {
   border-radius: .5em;
   color: #A9CEF4;
 }
+
+.PromptSubmit {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
