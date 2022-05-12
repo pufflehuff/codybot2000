@@ -24,11 +24,16 @@
 
 .ListHeader {
   padding: 1vh;
+  height: 15vh;
+}
+
+.ListHeader > span {
+  display: flex;
 }
 
 .ListContainer {
   overflow-y: auto;
-  height: 80vh;
+  height: 75vh;
   border: .1em solid #A9CEF4;
   border-left: none;
   border-right: none;
@@ -41,7 +46,6 @@
   justify-content: space-between;
   flex-direction: column;
   border: .1em solid #A9CEF4;
-  border-bottom: none;
   padding: 1.5em 3em;
   height: 15%;
   min-height:10em;

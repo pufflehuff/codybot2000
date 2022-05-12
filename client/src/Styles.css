@@ -13,9 +13,13 @@ a {
   color: #eab464;
 }
 
+header {
+  max-height: 10vh;
+}
+
 /* Main Button */
 button {
-  /* margin: .5em; */
+  margin: .1em;
   padding-top: .5%;
   padding-bottom: .5%;
   padding-left: 3%;
@@ -32,8 +36,8 @@ button {
 }
 
 img {
-  max-width: 11.5vh;
-  max-height: 11.5vh;
+  max-width: 10vh;
+  max-height: 10vh;
 }
 
 .rating {
