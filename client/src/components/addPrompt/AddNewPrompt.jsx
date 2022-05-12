@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Tags from './Tags';
 
 export default function AddNewPrompt() {
   const [promptName, setPromptName] = useState('');
@@ -54,6 +55,9 @@ export default function AddNewPrompt() {
           </select>
         </label>
         Constraints
+
+        <Tags />
+
         <label htmlFor="promptCOnstraints" className="PromptLabel">
 
           <input
