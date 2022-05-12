@@ -18,11 +18,14 @@ app.get('/api/problems', routes.problems);
 app.get('/api/problems/:_id', routes.problem);
 
 app.get('/api/problems/:_id/comments', routes.comments);
-app.put('/api/problems/:_id', routes.modifyProblem);
 
 app.get('/api/userStats/:username/:email/:first/:last', routes.userStats);
 
-app.post('/api/problems', routes.createProblem);
+app.put('/api/updateRating/:userId', routes.updateRating);
+
+app.put('/api/problems/:_id', routes.modifyProblem);
+
+app.post('/api/problems/:userId', routes.createProblem);
 
 // handle browser refresh with react-router
 app.get('/*', (req, res) => {

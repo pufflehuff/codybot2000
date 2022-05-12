@@ -22,6 +22,18 @@ module.exports = {
     return Problems.create(newProblem);
   },
 
+  addProblemToUser: (userId, problemObj) => Problems.findOneAndUpdate({
+    username: userId,
+  }, {
+    $push: {
+      submitted: problemObj,
+    },
+  }),
+
+  updateRating: (userId, updatedRating) => Problems.findOneAndUpdate({
+    username: userId,
+  }, updatedRating),
+
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body),
 
   getUserData: ({ userID }) => Users.findOne({ username: userID }),
@@ -37,7 +49,7 @@ module.exports = {
     lastDateCompleted: 0,
   }),
 
-  modifyUsers: ({ userID }, query) => {
-    Users.findOneAndUpdate({ username: userID }, query, { new: true });
-  },
+  updateStreak: ({ userID }, streakObj) => Users.findOneAndUpdate({
+    username: userID,
+  }, streakObj, { new: true }),
 };
