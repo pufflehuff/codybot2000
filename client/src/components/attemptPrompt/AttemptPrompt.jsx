@@ -93,12 +93,15 @@ export default function AttemptPrompt() {
             handleSubmit={handleSubmit}
           />
         </div>
+<<<<<<< HEAD
       </div>
       <div className="PromptPageRight">
         <div className="PromptContainer">
           <Prompt problem={problem} />
         </div>
         <SetTimer />
+=======
+>>>>>>> 3ddb08d6bf25f64db7eb39f3e2cf1a0aa5e6704b
         <div className="result">
           <div className="editor-header">
             <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
@@ -114,6 +117,7 @@ export default function AttemptPrompt() {
           />
         </div>
       </div>
+<<<<<<< HEAD
       <Modal open={testsPassed}>
         <div className="PromptSubmit">
           <Confetti
@@ -125,6 +129,13 @@ export default function AttemptPrompt() {
           <h1>Great Job! You Passed!</h1>
         </div>
       </Modal>
+=======
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
+          <Prompt problem={problem} />
+        </div>
+      </div>
+>>>>>>> 3ddb08d6bf25f64db7eb39f3e2cf1a0aa5e6704b
     </div>
   );
 }
