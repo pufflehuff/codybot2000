@@ -1,7 +1,15 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
+<<<<<<< HEAD
+import { useLocation, Link } from 'react-router-dom';
+import styled from 'styled-components';
+=======
 import { useLocation } from 'react-router-dom';
+>>>>>>> main
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
+import Confetti from 'react-confetti';
+import Modal from '@mui/material/Modal';
+import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -15,8 +23,22 @@ export default function AttemptPrompt() {
   // const { currentUserId } = location.state;
   // console.log(currentUserId);
 
+  // Add parameters to default function
+  let params = problem.examples[0].input.split(', ');
+  params = params.map((param) => param.slice(0, param.indexOf(' ')));
+
+  const defaultText = (
+    `function toyProblem(${params.join(', ')}) {
+  // Your Code Here
+
+};
+
+toyProblem(/* input */);`);
+
   const [html, setHtml] = useState(null);
-  const [js, setJs] = useState('');
+  const [js, setJs] = useState(defaultText);
+  const [testsPassed, setPassed] = useState(true);
+  const [show, setShow] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -42,6 +64,24 @@ export default function AttemptPrompt() {
     setHtml('');
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let passed = false;
+
+    problem.examples.forEach((example) => {
+      let args = example.input.split(',');
+      args = args.map((arg) => arg.slice(arg.indexOf('=') + 2));
+      args = args.join(', ');
+      const test = `toyProblem(${args});`;
+
+      passed = `${eval(`${js + test}`)}` === problem.output;
+
+      console.log(js + test);
+      console.log(eval(`${js + test}`));
+    });
+    setPassed(passed);
+  };
+
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
@@ -52,6 +92,7 @@ export default function AttemptPrompt() {
             value={js}
             onChange={setJs}
             handleClick={handleClick}
+            handleSubmit={handleSubmit}
           />
         </div>
       </div>
@@ -74,6 +115,17 @@ export default function AttemptPrompt() {
           />
         </div>
       </div>
+      <Modal open={testsPassed}>
+      <div className="PromptSubmit">
+        <Confetti
+          recycle={false}
+          run={testsPassed}
+          numberOfPieces={1000}
+          gravity={2}
+        />
+        <h1>Great Job! You Passed!</h1>
+      </div>
+    </Modal>
     </div>
   );
 }
