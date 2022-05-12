@@ -65,6 +65,12 @@ module.exports.updateRating = (req, res) => {
     .catch((err) => res.status(500).json(err));
 };
 
+module.exports.reportProblem = (req, res) => {
+  handlers.updateRating(req.params, req.body)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
+
 module.exports.modifyProblem = (req, res) => {
   handlers.modifyProblem(req, res)
     .then((data) => res.json(data))

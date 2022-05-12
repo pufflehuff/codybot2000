@@ -9,6 +9,7 @@ const problemSchema = mongoose.Schema({
     explanation: String,
     _id: false,
   }],
+  parameters: [String],
   constraints: [String],
   tags: [String],
   difficulty: String,
@@ -20,6 +21,7 @@ const problemSchema = mongoose.Schema({
     5: Number,
     _id: false,
   },
+  reportedCount: Number,
   timestamp: String,
   author: String,
 }, { versionKey: false });

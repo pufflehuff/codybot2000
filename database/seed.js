@@ -35,9 +35,13 @@ module.exports = [
           "Sorting"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-07",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -76,9 +80,13 @@ module.exports = [
           "Hash Table"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -109,9 +117,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -143,9 +155,13 @@ module.exports = [
           "Prefix Sum"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -182,9 +198,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -216,9 +236,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -257,9 +281,13 @@ module.exports = [
           "Binary Search"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -299,9 +327,13 @@ module.exports = [
           "Binary Search"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -338,9 +370,13 @@ module.exports = [
           "Sorting"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -373,9 +409,13 @@ module.exports = [
           "Greedy"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -406,9 +446,13 @@ module.exports = [
           "Bit Manipulation"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -442,9 +486,13 @@ module.exports = [
           "Bit Manipulation"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -474,9 +522,13 @@ module.exports = [
           "Bit Manipulation"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -517,9 +569,13 @@ module.exports = [
           "Sorting"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -549,9 +605,13 @@ module.exports = [
           "Bit Manipulation"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -582,9 +642,13 @@ module.exports = [
           "Memoization"
       ],
       "difficulty": "easy",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -623,9 +687,13 @@ module.exports = [
           "Breadth-First Search"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -662,9 +730,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -701,9 +773,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -746,9 +822,13 @@ module.exports = [
           "Memoization"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -782,9 +862,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -815,9 +899,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -853,9 +941,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -891,9 +983,13 @@ module.exports = [
           "Dynamic Programming"
       ],
       "difficulty": "medium",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-09",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -930,9 +1026,13 @@ module.exports = [
           "Divide and Conquer"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -967,9 +1067,13 @@ module.exports = [
           "Hash Function"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -1010,9 +1114,13 @@ module.exports = [
           "Bitmask"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -1048,9 +1156,13 @@ module.exports = [
           "Bitmask"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -1084,9 +1196,13 @@ module.exports = [
           "Breadth-First Search"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   },
   {
@@ -1128,9 +1244,13 @@ module.exports = [
           "Merge Sort"
       ],
       "difficulty": "hard",
-      "rating": 0,
-      "numRatings": 0,
-      "timestamp": "2022-05-11",
+      "rating": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+      },
       "author": "leetcode"
   }
 ]
