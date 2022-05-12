@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
-// import axios from 'axios';
+import axios from 'axios';
 
 export default function Prompt({ problem }) {
   const [rating, setRating] = useState(0);
@@ -12,15 +13,24 @@ export default function Prompt({ problem }) {
 
   function handleSubmit() {
     setSubmitted(true);
-    // axios.put('/api/rating', {
-    // problem id & rating here
-    // })
+
+    console.log(problem);
+
+    const newRating = problem.rating;
+    newRating[rating] += 1;
+
+    axios.put(`/api/updateRating/${problem._id}`, newRating)
+      .catch((err) => console.log(err));
   }
 
   function handleReport() {
     setReported(true);
-    // axios.put('/api/reportproblem')
-    //   .catch((err) => console.log(err));
+
+    let newReportedCount = problem.reportedCount;
+    newReportedCount += 1;
+
+    axios.put(`/api/reportProblem/${problem._id}`, newReportedCount)
+      .catch((err) => console.log(err));
   }
 
   return (
