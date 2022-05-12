@@ -13,6 +13,7 @@ export default function Editor(props) {
     value,
     onChange,
     handleClick,
+    handleSubmit,
   } = props;
 
   const handleChange = (editor, data, val) => {
@@ -23,7 +24,8 @@ export default function Editor(props) {
     <div className="code-editor">
       <div className="editor-header">
         {displayName}
-        <button type="button" className="run" onClick={(e) => handleClick(e)}>Run</button>
+        <button type="button" className="run" onClick={(e) => handleClick(e)}>Run Code</button>
+        <button type="button" onClick={(e) => handleSubmit(e)}>Submit</button>
       </div>
       <ControlledEditor
         onBeforeChange={handleChange}
@@ -47,4 +49,5 @@ Editor.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
