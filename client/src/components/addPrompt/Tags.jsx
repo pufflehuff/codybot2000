@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
@@ -42,3 +43,9 @@ export default function Tags({ tags, formTags, setTags }) {
     </Stack>
   );
 }
+
+Tags.propTypes = {
+  tags: PropTypes.array.isRequired,
+  formTags: PropTypes.array.isRequired,
+  setTags: PropTypes.func.isRequired,
+};
