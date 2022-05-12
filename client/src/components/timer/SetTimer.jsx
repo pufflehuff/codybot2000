@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Timer from './Timer';
 
-export default function SetTimer() {
+export default function SetTimer({ expire }) {
   // default timer is set to 5
   const [time, setTime] = useState(new Date());
   const [showConutdown, setShowCountdown] = useState(false);
   return (
     <div>
       {showConutdown
-        ? <Timer expiryTimestamp={time} setShowCountdown={setShowCountdown} />
+        ? <Timer expiryTimestamp={time} setShowCountdown={setShowCountdown} expire={expire} />
         : (
           <>
             <label htmlFor="settingTimer">
@@ -29,3 +30,6 @@ export default function SetTimer() {
     </div>
   );
 }
+SetTimer.propTypes = {
+  expire: PropTypes.func.isRequired,
+};
