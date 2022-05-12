@@ -1,15 +1,10 @@
 /* eslint-disable no-eval */
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { useLocation, Link } from 'react-router-dom';
-import styled from 'styled-components';
-=======
 import { useLocation } from 'react-router-dom';
->>>>>>> main
 import { Controlled as ControlledEditor } from 'react-codemirror2-react-17';
 import Confetti from 'react-confetti';
 import Modal from '@mui/material/Modal';
-import SetTimer from '../timer/SetTimer';
+// import SetTimer from '../timer/SetTimer';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -58,7 +53,7 @@ toyProblem(/* input */);`);
 
   const [html, setHtml] = useState(null);
   const [js, setJs] = useState(defaultText);
-  const [testsPassed, setPassed] = useState(true);
+  const [testsPassed, setPassed] = useState(false);
   const [show, setShow] = useState(false);
 
   const handleClick = (e) => {
@@ -101,8 +96,14 @@ toyProblem(/* input */);`);
       console.log(eval(`${js + test}`));
     });
     setPassed(passed);
+    setShow(true);
   };
-
+  let modalText;
+  if (testsPassed) {
+    modalText = <h1>Great Job! You Passed!</h1>;
+  } else {
+    modalText = <h1>Oh No! Review and Try Again Later</h1>;
+  }
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
@@ -136,17 +137,20 @@ toyProblem(/* input */);`);
           />
         </div>
       </div>
-      <Modal open={testsPassed}>
-      <div className="PromptSubmit">
-        <Confetti
-          recycle={false}
-          run={testsPassed}
-          numberOfPieces={1000}
-          gravity={2}
-        />
-        <h1>Great Job! You Passed!</h1>
-      </div>
-    </Modal>
+      <Modal
+        open={show}
+        onClose={() => setShow(false)}
+      >
+        <div className="PromptSubmit">
+          <Confetti
+            recycle={false}
+            run={testsPassed}
+            numberOfPieces={1000}
+            gravity={2}
+          />
+          {modalText}
+        </div>
+      </Modal>
     </div>
   );
 }
