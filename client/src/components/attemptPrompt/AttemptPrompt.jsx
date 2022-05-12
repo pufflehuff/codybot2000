@@ -54,11 +54,6 @@ export default function AttemptPrompt() {
             handleClick={handleClick}
           />
         </div>
-      </div>
-      <div className="PromptPageRight">
-        <div className="PromptContainer">
-          <Prompt problem={problem} />
-        </div>
         <div className="result">
           <div className="editor-header">
             <button type="button" onClick={(e) => handleClear(e)}>Clear</button>
@@ -72,6 +67,11 @@ export default function AttemptPrompt() {
               readOnly: true,
             }}
           />
+        </div>
+      </div>
+      <div className="PromptPageRight">
+        <div className="PromptContainer">
+          <Prompt problem={problem} />
         </div>
       </div>
     </div>
