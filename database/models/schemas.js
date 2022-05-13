@@ -27,7 +27,7 @@ const problemSchema = mongoose.Schema({
 }, { versionKey: false });
 
 const usersSchema = mongoose.Schema({
-  username: String,
+  userId: String,
   firstName: String,
   lastName: String,
   email: String,

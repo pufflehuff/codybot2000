@@ -2,7 +2,7 @@
 const { Problems, Users } = require('../database/models/schemas');
 
 module.exports = {
-  problems: () => Problems.find({}).sort({ timestamp: 'desc' }),
+  problems: () => Users.find({}),
   problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
@@ -13,9 +13,15 @@ module.exports = {
       constraints: body.constraints,
       tags: body.tags,
       difficulty: body.difficulty,
-      rating: body.rating,
-      numRatings: body.numRatings,
+      rating: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+      },
       timestamp: new Date(Date.now()),
+      parameters: body.parameters,
       author: body.author,
     });
 
@@ -37,6 +43,8 @@ module.exports = {
   reportProblem: (problemId, reportObj) => Problems.findOneAndUpdate(problemId, reportObj, {
     new: true,
   }),
+
+  modifyUser: (userId, userObj) => Users.findOneAndUpdate(userId, userObj, { new: true }),
 
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body, { new: true }),
 
