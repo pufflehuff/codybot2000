@@ -34,7 +34,7 @@ const usersSchema = mongoose.Schema({
   problems: [{
     problemId: String,
     problemName: String,
-    isComplete: Boolean,
+    isComplete: { type: Boolean, default: false },
     _id: false,
   }],
   submitted: [{
@@ -42,8 +42,8 @@ const usersSchema = mongoose.Schema({
     problemName: String,
     _id: false,
   }],
-  streak: Number,
-  lastDateCompleted: Number,
+  streak: { type: Number, default: 0 },
+  lastDateCompleted: { type: Date, default: new Date() },
 }, { versionKey: false });
 
 const Problems = mongoose.model('codybot', problemSchema);

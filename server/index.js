@@ -19,7 +19,7 @@ app.get('/api/problems/:_id', routes.problem);
 
 // app.get('/api/problems/:_id/comments', routes.comments);
 
-app.get('/api/userStats/:username/:email/:first/:last', routes.userStats);
+app.get('/api/userStats/:userId/:email/:first/:last', routes.userStats);
 
 app.put('/api/problems/:_id', routes.modifyProblem);
 
