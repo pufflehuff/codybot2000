@@ -13,7 +13,7 @@ import Prompt from './Prompt';
 
 let params;
 let name;
-let modalText = 'Great Job! You Passed!';
+let modalText;
 
 const buildText = (problem) => {
   params = problem.examples[0].input.split(', ');
@@ -79,13 +79,16 @@ export default function AttemptPrompt() {
 
       passed = JSON.stringify(eval(`${js + test}`)) === JSON.stringify(example.output);
       if (!passed) {
-        modalText = `Oh No! Expected ${JSON.stringify(example.output)} but got ${JSON.stringify(eval(`${js + test}`))}`;
+        modalText = `Oh No! Expected ${JSON.stringify(example.output)} but got ${`${eval(`${js + test}`)}`}`;
         setShow(true);
         break;
       }
     }
 
-    if (passed) { setPassed(true); }
+    if (passed) {
+      modalText = 'Great Job! You Passed!';
+      setPassed(true);
+    }
     setShow(true);
   };
 
