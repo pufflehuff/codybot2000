@@ -9,16 +9,18 @@
   width: 50%;
   margin: 2em;
   margin-left: 4em;
+  height: 90vh;
 }
 
 .CodeMirror {
-  height: 37vh;
+  height: 30vh;
 }
 
 .PromptPageRight {
   width: 50%;
   margin: 2em;
   margin-right: 4em;
+  height: 90vh;
 }
 
 .PromptContainer {
@@ -30,6 +32,8 @@
   margin: .5em;
   margin-left: 1em;
   margin-top: 1em;
+  display: flex;
+  align-items: center;
 }
 
 .run {
@@ -49,4 +53,22 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.PromptTimer, .PromptTimer > label {
+  display: flex;
+  align-items: center;
+}
+
+.PromptTimer > label > input {
+  width: 3rem;
+  height: 2rem;
+}
+
+.MuiInputLabel-root {
+  color: #eab464 !important;
+}
+
+input[type=text] {
+
 }

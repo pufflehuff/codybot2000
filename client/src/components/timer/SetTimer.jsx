@@ -24,7 +24,7 @@ export default function SetTimer({ expire }) {
                 }}
               />
             </label>
-            <button type="button" onClick={() => setShowCountdown(true)}> start </button>
+            <button type="button" onClick={() => setShowCountdown(true)}> Start </button>
           </>
         )}
     </div>
