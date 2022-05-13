@@ -69,7 +69,7 @@ module.exports.updateRating = (req, res) => {
 };
 
 module.exports.reportProblem = (req, res) => {
-  handlers.updateRating(req.params, req.body)
+  handlers.reportProblem(req.params, req.body)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };

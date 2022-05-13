@@ -6,7 +6,16 @@ import StarRating from './StarRating';
 
 export default function ToyProblem({ problem, setFilter }) {
   // eslint-disable-next-line object-curly-newline, no-unused-vars
-  const { name, prompt, tags, difficulty, numRatings, rating, timestamp, author } = problem;
+  const { name, prompt, tags, difficulty, rating, timestamp, author, reportedCount } = problem;
+
+  let sumRatings = 0;
+  let countRatings = 0;
+  const ratings = Object.entries(rating);
+  ratings.forEach((star) => {
+    sumRatings += star[0] * star[1];
+    countRatings += star[1];
+  });
+  const displayRating = countRatings !== 0 ? sumRatings / countRatings : 0;
 
   return (
     <div className="ToyProblemEntry">
@@ -24,7 +33,7 @@ export default function ToyProblem({ problem, setFilter }) {
         </span>
       </div>
       <div className="ToyProblemRow">
-        <StarRating rating={rating} special="ToyProblemRating" />
+        <StarRating rating={displayRating} special="ToyProblemRating" />
         <span>
           {tags.map((tag) => (
             <button
@@ -48,7 +57,6 @@ ToyProblem.propTypes = {
   prompt: PropTypes.string,
   tags: PropTypes.array,
   difficulty: PropTypes.string,
-  numRatings: PropTypes.number,
   rating: PropTypes.number,
   timestamp: PropTypes.string,
   author: PropTypes.string,
@@ -61,7 +69,6 @@ ToyProblem.defaultProps = {
   prompt: '',
   tags: [],
   difficulty: '',
-  numRatings: null,
   rating: null,
   timestamp: '',
   author: '',
