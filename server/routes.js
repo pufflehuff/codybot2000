@@ -35,29 +35,14 @@ module.exports.createProblem = (req, res) => {
 };
 
 module.exports.userStats = (req, res) => {
-  // username is the google identifier ID that is unique to each google account
-  // - we can use it to identify a user
-  const { username, email, first, last } = req.params;
+
   handlers.getUserData(req.params)
     .then((data) => {
-      // one day 86400000
-      if (!data) {
-        handlers.createUser(req.params)
-        .then((data) => res.json(data))
+      if ((Date.now() - 86400000) > data.lastDateCompleted.getTime()) {
+        handlers.getUserData(data, { streak: 0 })
+        .then((data) => res.json('deleted'))
         .catch((err) => res.status(500).json(err));
-      } else {
-        const date = Date.now();
-        // the amount of milliseconds in 24 hours
-        if ((date - data.lastDateCompleted) >= 86400000) {
-          handlers.updateStreak(req.params, { streak: 0 })
-          .then((newData) => {
-            res.json(newData);
-          })
-          .catch((err) => res.status(500).json(err));
-        } else {
-          res.json(data);
-        }
-      }
+      } else res.json(data);
     })
     .catch((err) => res.status(500).json(err));
 };
@@ -70,6 +55,12 @@ module.exports.updateRating = (req, res) => {
 
 module.exports.reportProblem = (req, res) => {
   handlers.reportProblem(req.params, req.body)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+};
+
+module.exports.modifyUser = (req, res) => {
+  handlers.modifyUser(req.params, req.body)
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 };

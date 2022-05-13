@@ -16,7 +16,15 @@ module.exports = {
       constraints: body.constraints,
       tags: body.tags,
       difficulty: body.difficulty,
+      rating: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+      },
       timestamp: new Date(Date.now()),
+      parameters: body.parameters,
       author: body.author,
     });
 
@@ -39,20 +47,26 @@ module.exports = {
     new: true,
   }),
 
+  modifyUser: (userId, userObj) => Users.findOneAndUpdate(userId, userObj, { new: true }),
+
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body, { new: true }),
 
-  getUserData: ({ userID }) => Users.findOne({ username: userID }),
+  getUserData: (params, query) => {
+    if (query) {
+      return Users.findOneAndUpdate(params, query);
+    }
 
-  createUser: (params) => Users.create({
-    username: params.username,
-    firstName: params.first,
-    lastName: params.last,
-    email: params.email,
-    problems: [],
-    submitted: [],
-    streak: 0,
-    lastDateCompleted: 0,
-  }),
+    return Users.findOneAndUpdate(params.userId, {
+      userId: params.userId,
+      email: params.email,
+      firstName: params.first,
+      lastName: params.last,
+    }, {
+      upsert: true,
+      new: true,
+      setDefaultsOnInsert: true,
+    });
+  },
 
   updateStreak: ({ userID }, streakObj) => Users.findOneAndUpdate({
     username: userID,
