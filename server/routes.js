@@ -23,7 +23,7 @@ module.exports.createProblem = (req, res) => {
   handlers.createProblem(req, res)
     .then((data) => {
       if (req.params) {
-        handlers.addProblemToUser(req.params, { problemId: data[0]._id, problemName: data[0].name})
+        handlers.addProblemToUser(req.params, { problemId: data._id, problemName: data.name})
         .then((data) => res.json(data))
         .catch((err) => res.status(500).json(err));
       } else res.json(data)
@@ -44,7 +44,7 @@ module.exports.userStats = (req, res) => {
     .then((data) => {
       if (!data) {
         handlers.createUser(req.params)
-        .then((data) => res.json(data[0]))
+        .then((data) => res.json(data))
         .catch((err) => res.status(500).json(err))
       } else res.json(data)
     })
