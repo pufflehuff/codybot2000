@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Tags from './Tags';
 
@@ -197,16 +197,15 @@ export default function AddNewPrompt() {
         </label>
       </div>
       <div className="PromptRow">
-        <button
-          className="SubmitPrompt"
-          type="submit"
-          onClick={(event) => {
-            event.preventDefault();
-            handleSubmit();
-          }}
-        >
-          Submit
-        </button>
+        <Link to="/">
+          <button
+            className="SubmitPrompt"
+            type="button"
+            onClick={() => handleSubmit()}
+          >
+            Submit
+          </button>
+        </Link>
       </div>
 
     </form>
