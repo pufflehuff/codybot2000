@@ -2,9 +2,8 @@
 const { Problems, Users } = require('../database/models/schemas');
 
 module.exports = {
-  problems: () => Problems.find({}).sort({ timestamp: 'desc' }),
-  problem: ({ params }) => Problems.findOne(params),
-  comments: () => 'you would normally put a db query here',
+  problems: () => Problems.find({}).sort({ timestamp: 'asc' }),
+  problem: ({ params }) => Problems.findOneAndDelete(params),
   createProblem: ({ body }) => {
     const newProblem = new Problems({
       name: body.name,
@@ -28,9 +27,7 @@ module.exports = {
     return Problems.create(newProblem);
   },
 
-  addProblemToUser: (userId, problemObj) => Problems.findOneAndUpdate({
-    username: userId,
-  }, {
+  addProblemToUser: (userId, problemObj) => Users.findOneAndUpdate(userId, {
     $push: {
       submitted: problemObj,
     },
@@ -48,24 +45,23 @@ module.exports = {
 
   modifyProblem: ({ params, body }) => Problems.findOneAndUpdate(params, body, { new: true }),
 
-  getUserData: (params, query) => {
-    if (query) {
-      return Users.findOneAndUpdate(params, query);
-    }
+  getUserData: (id) => Users.findOne({ userId: id }),
 
-    return Users.findOneAndUpdate(params.userId, {
+  createUser: (params) => {
+    const newUser = {
       userId: params.userId,
-      email: params.email,
       firstName: params.first,
       lastName: params.last,
-    }, {
-      upsert: true,
-      new: true,
-      setDefaultsOnInsert: true,
-    });
+      email: params.email,
+      problems: [],
+      submitted: [],
+      streak: 0,
+      lastDateCompleted: null,
+    };
+    return Users.create(newUser);
   },
 
   updateStreak: ({ userID }, streakObj) => Users.findOneAndUpdate({
     username: userID,
-  }, streakObj, { new: true }),
+  }, streakObj),
 };
