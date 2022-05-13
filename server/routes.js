@@ -35,9 +35,9 @@ module.exports.userStats = (req, res) => {
 
   handlers.getUserData(req.params)
     .then((data) => {
-      if ((Date.now() - 86400000) > data.lastDateCompleted.getTime()) {
+      if (Date.now() - data.lastDateCompleted.getTime() > 86400000) {
         handlers.getUserData(data, { streak: 0 })
-        .then((data) => res.json('deleted'))
+        .then((data) => res.json(data))
         .catch((err) => res.status(500).json(err));
       } else res.json(data);
     })

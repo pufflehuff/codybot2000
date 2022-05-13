@@ -63,15 +63,18 @@
   justify-content: space-between
 }
 
-.Tags {
+.Tags, .MuiChip-root {
   background: linear-gradient(160deg, #EEC281 5%,#EAB464 50%, #E7A94B, #E4A03A 95%);
   margin-right: .5rem;
   border-radius: 1rem;
   color: #2a383c;
   padding: .1rem;
-  padding-left: .25rem;
-  padding-right: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
   font-size: 1rem;
+  text-shadow: none;
+  letter-spacing: 0;
+
 }
 
 
@@ -94,5 +97,3 @@
 .hard {
   color: red;
 }
-
-

@@ -64,3 +64,11 @@ code {
   width: 3rem;
   height: 2rem;
 }
+
+.MuiInputLabel-root {
+  color: #eab464 !important;
+}
+
+input[type=text] {
+
+}
