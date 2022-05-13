@@ -21,8 +21,10 @@ const buildText = (problem) => {
 
   name = problem.name.split(' ', 2);
   name[0] = name[0].toLowerCase();
-  name[1] = name[1].charAt(0).toUpperCase() + name[1].slice(1);
-  name = name.join('').replace(/[^a-zA-Z0-9]/g, '_');
+  if (name[1]) {
+    name[1] = name[1].charAt(0).toUpperCase() + name[1].slice(1);
+  }
+  name = name.join('').replace(/[^a-zA-Z]/g, '');
 
   return (`function ${name}(${params.join(', ')}) {`
     + `\n // Your Code Here\n\n};\n\n${name}(/* input */);`);
