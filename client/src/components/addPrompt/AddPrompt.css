@@ -39,3 +39,12 @@ label > input[type=text], input[type=number], select, textarea {
   border-style: inset;
   border-radius: .3rem;
 }
+
+.PromptContainer > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.PromptContainer > div > div {
+  width: 100%;
+}
