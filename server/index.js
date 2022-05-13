@@ -3,12 +3,14 @@ require('../database/index');
 
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 
 const app = express();
 
 const routes = require('./routes');
 
 app.use(express.json());
+app.use(compression());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 const port = process.env.PORT || 3000;
