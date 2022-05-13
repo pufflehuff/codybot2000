@@ -23,7 +23,7 @@ module.exports.createProblem = (req, res) => {
   handlers.createProblem(req, res)
     .then((data) => {
       if (req.params) {
-        module.exports.addProblemToUser(req.params, { problemId: data._id, problemName: data.name})
+        handlers.addProblemToUser(req.params, { problemId: data._id, problemName: data.name})
         .then((data) => res.json(data))
         .catch((err) => res.status(500).json(err));
       } else res.json(data)
@@ -33,15 +33,22 @@ module.exports.createProblem = (req, res) => {
 
 module.exports.userStats = (req, res) => {
 
-  handlers.getUserData(req.params)
+  handlers.getUserData(req.params.userId)
+    // {
+    //   if (Date.now() - data.lastDateCompleted.getTime() > 86400000) {
+    //     handlers.getUserData(data, { streak: 0 })
+    //     .then((data) => res.json(data))
+    //     .catch((err) => res.status(500).json(err));
+    //   } else res.json(data);
+    // })
     .then((data) => {
-      if (Date.now() - data.lastDateCompleted.getTime() > 86400000) {
-        handlers.getUserData(data, { streak: 0 })
+      if (!data) {
+        handlers.createUser(req.params)
         .then((data) => res.json(data))
-        .catch((err) => res.status(500).json(err));
-      } else res.json(data);
+        .catch((err) => res.status(500).json(err))
+      } else res.json(data)
     })
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => res.status(500).json(err))
 };
 
 module.exports.updateRating = (req, res) => {
