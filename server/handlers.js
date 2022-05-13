@@ -2,7 +2,7 @@
 const { Problems, Users } = require('../database/models/schemas');
 
 module.exports = {
-  problems: () => Users.find({}),
+  problems: () => Problems.find({}),
   problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
