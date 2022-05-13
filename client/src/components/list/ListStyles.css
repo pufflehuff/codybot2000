@@ -87,6 +87,7 @@
   padding-right: .25em;
   border-radius: .5em;
   max-height: 1.5em;
+  font-variant: all-petite-caps;
 }
 .easy {
   color: green;
