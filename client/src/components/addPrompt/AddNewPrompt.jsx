@@ -1,18 +1,30 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import Tags from './Tags';
 
 export default function AddNewPrompt() {
   // THIS IS FOR CURRENT USER
-  // const location = useLocation();
-  // const { currentUserId } = location.state;
-  // console.log(currentUserId);
+  const location = useLocation();
+  const { currentUserId } = location.state;
+  console.log(currentUserId);
   // THIS IS FOR CURRENT USER
   const [promptName, setPromptName] = useState('');
   const [promptBody, setPromptBody] = useState('');
-  const [dificulty, setDificulty] = useState('');
-  const [paramNames, setParamNames] = useState('');
-  const [paramVals, setParamVals] = useState('');
+  const [difficulty, setDifficulty] = useState('easy');
+
+  const [param1, setParam1] = useState('');
+  const [param2, setParam2] = useState('');
+  const [param3, setParam3] = useState('');
+
+  const [val1, setVal1] = useState('');
+  const [val2, setVal2] = useState('');
+  const [val3, setVal3] = useState('');
+
   const [exOutput, setExOutput] = useState('');
+
   const [constraints, setConstraints] = useState('');
   const [formTags, setFormTags] = useState(['User created']);
   const [tags] = useState([
@@ -35,50 +47,32 @@ export default function AddNewPrompt() {
   ]);
 
   const handleSubmit = () => {
-    // timestamp: body.timestamp,
-    //      author: body.author,
+    let inputString = `${param1} = ${val1}`;
 
-    const inputNamesArr = paramNames.split(', ');
-    const inputValsArr = paramVals.split(', ');
-    const inputStrings = [];
-
-    for (let i = 0; i < inputNamesArr.length; i += 1) {
-      if (inputNamesArr.length !== inputValsArr.length) {
-        console.log('please make sure the numbe if input names,m and values match');
-        return;
-      }
-
-      const inputString = `${inputNamesArr[i]} = ${inputValsArr[i]}`;
-      inputStrings.push(inputString);
+    if (param2) {
+      inputString += `, ${param2} = ${val2}`;
     }
 
-    let inputsString = '';
-
-    inputStrings.forEach((string) => {
-      inputsString += `${string}, `;
-    });
-
-    inputsString = inputsString.substring(0, inputsString.length - 2);
-
-    const outputString = `${exOutput}`;
+    if (param3) {
+      inputString += `, ${param3} = ${val3}`;
+    }
 
     const examples = [
-      { input: inputsString, output: outputString },
+      { input: inputString, output: exOutput },
     ];
-
-    console.log(examples);
 
     const newPrompt = {
       name: promptName,
       prompt: promptBody,
-      dificulty,
+      difficulty,
       tags: formTags,
       constraints,
       examples,
-      rating: 0,
-      numRatings: 0,
+      author: currentUserId,
     };
-    console.log(newPrompt);
+
+    axios.post(`/api/problems/${currentUserId}`, newPrompt)
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -96,16 +90,16 @@ export default function AddNewPrompt() {
         </label>
       </div>
       <div className="PromptRow">
-        <label htmlFor="promptDificulty" className="PromptLabel">
-          Dificulty
+        <label htmlFor="promptdifficulty" className="PromptLabel">
+          difficulty
           <select
             onChange={(event) => {
-              setDificulty(event.target.value);
+              setDifficulty(event.target.value);
             }}
           >
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
           </select>
         </label>
         <Tags tags={tags} formTags={formTags} setTags={setFormTags} />
@@ -132,31 +126,65 @@ export default function AddNewPrompt() {
             }}
           />
         </label>
-
         <label htmlFor="promptExamples" className="PromptLabel">
-          Prompt Examples
-
-          <label htmlFor="promptParams">
-            Parameter Names
+          Prompt Example
+          <div>
+            <div><b>Input(s): </b></div>
+            <label style={{ display: 'inline-block' }}>Param&nbsp;</label>
             <input
+              style={{ display: 'inline-block', width: '60px' }}
               type="text"
               onChange={(event) => {
-                setParamNames(event.target.value);
+                setParam1(event.target.value);
               }}
             />
-          </label>
-
-          <label htmlFor="promptParamVals">
-            Parameter Values
+            &nbsp;=&nbsp;
             <input
+              style={{ display: 'inline-block' }}
               type="text"
               onChange={(event) => {
-                setParamVals(event.target.value);
+                setVal1(event.target.value);
               }}
             />
-          </label>
+          </div>
+          <div>
+            <label style={{ display: 'inline-block' }}>Param&nbsp;</label>
+            <input
+              style={{ display: 'inline-block', width: '60px' }}
+              type="text"
+              onChange={(event) => {
+                setParam2(event.target.value);
+              }}
+            />
+            &nbsp;=&nbsp;
+            <input
+              style={{ display: 'inline-block' }}
+              type="text"
+              onChange={(event) => {
+                setVal2(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ display: 'inline-block' }}>Param&nbsp;</label>
+            <input
+              style={{ display: 'inline-block', width: '60px' }}
+              type="text"
+              onChange={(event) => {
+                setParam3(event.target.value);
+              }}
+            />
+            &nbsp;=&nbsp;
+            <input
+              style={{ display: 'inline-block' }}
+              type="text"
+              onChange={(event) => {
+                setVal3(event.target.value);
+              }}
+            />
+          </div>
           <label htmlFor="promptOutputs">
-            Expected Ouput
+            <b>Output:&nbsp;</b>
             <input
               type="text"
               onChange={(event) => {
@@ -165,9 +193,7 @@ export default function AddNewPrompt() {
             />
           </label>
         </label>
-
       </div>
-
       <div className="PromptRow">
         <button
           className="SubmitPrompt"
