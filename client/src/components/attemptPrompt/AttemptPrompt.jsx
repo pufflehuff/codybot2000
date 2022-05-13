@@ -92,11 +92,6 @@ export default function AttemptPrompt() {
     alert('You have run out of time');
   };
 
-  // if (testsPassed) {
-  //   modalText = <h1>Great Job! You Passed!</h1>;
-  // } else {
-  //   modalText = <h1>Oh No! Review and Try Again</h1>;
-  // }
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
