@@ -22,6 +22,9 @@ module.exports.comments = (req, res) => {
 module.exports.createProblem = (req, res) => {
   handlers.createProblem(req, res)
     .then((data) => {
+
+      console.log('ping! in routes.js');
+
       if (req.params) {
         module.exports.addProblemToUser(req.params, { problemId: data._id, problemName: data.name})
         .then((data) => res.json(data))

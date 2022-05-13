@@ -6,6 +6,9 @@ module.exports = {
   problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
+
+    console.log('ping! body: ', body);
+
     const newProblem = new Problems({
       name: body.name,
       prompt: body.prompt,
@@ -13,8 +16,6 @@ module.exports = {
       constraints: body.constraints,
       tags: body.tags,
       difficulty: body.difficulty,
-      rating: body.rating,
-      numRatings: body.numRatings,
       timestamp: new Date(Date.now()),
       author: body.author,
     });
