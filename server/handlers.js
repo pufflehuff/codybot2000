@@ -6,9 +6,6 @@ module.exports = {
   problem: ({ params }) => Problems.findOne(params),
   comments: () => 'you would normally put a db query here',
   createProblem: ({ body }) => {
-
-    console.log('ping! body: ', body);
-
     const newProblem = new Problems({
       name: body.name,
       prompt: body.prompt,

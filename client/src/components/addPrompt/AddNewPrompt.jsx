@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -12,7 +13,7 @@ export default function AddNewPrompt() {
   // THIS IS FOR CURRENT USER
   const [promptName, setPromptName] = useState('');
   const [promptBody, setPromptBody] = useState('');
-  const [difficulty, setDifficulty] = useState('');
+  const [difficulty, setDifficulty] = useState('easy');
 
   const [param1, setParam1] = useState('');
   const [param2, setParam2] = useState('');
@@ -96,9 +97,9 @@ export default function AddNewPrompt() {
               setDifficulty(event.target.value);
             }}
           >
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
           </select>
         </label>
         <Tags tags={tags} formTags={formTags} setTags={setFormTags} />
