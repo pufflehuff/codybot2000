@@ -13,6 +13,7 @@ import Prompt from './Prompt';
 
 let params;
 let name;
+let modalText = 'Great Job! You Passed!';
 
 const buildText = (problem) => {
   params = problem.examples[0].input.split(', ');
@@ -20,7 +21,8 @@ const buildText = (problem) => {
 
   name = problem.name.split(' ', 2);
   name[0] = name[0].toLowerCase();
-  name = name.join('');
+  name[1] = name[1].charAt(0).toUpperCase() + name[1].slice(1);
+  name = name.join('').replace(/[^a-zA-Z0-9]/g, '_');
 
   return (`function ${name}(${params.join(', ')}) {`
     + `\n // Your Code Here\n\n};\n\n${name}(/* input */);`);
@@ -43,9 +45,9 @@ export default function AttemptPrompt() {
     // eslint-disable-next-line no-eval
     try {
       if (!html) {
-        setHtml(`  > ${eval(`${js}`)}`);
+        setHtml(`  > ${JSON.stringify(eval(`${js}`))}`);
       } else {
-        setHtml(`${html}\n  > ${eval(`${js}`)}`);
+        setHtml(`${html}\n  > ${JSON.stringify(eval(`${js}`))}`);
       }
     } catch (err) {
       console.log(err);
@@ -66,15 +68,22 @@ export default function AttemptPrompt() {
     e.preventDefault();
     let passed = false;
 
-    problem.examples.forEach((example) => {
+    for (let i = 0; i < problem.examples.length; i += 1) {
+      const example = problem.examples[i];
       let args = example.input.split(', ');
       args = args.map((arg) => arg.slice(arg.indexOf('= ') + 2));
       args = args.join(', ');
       const test = `${name}(${args});`;
 
-      passed = `${eval(`${js + test}`)}` === example.output;
-    });
-    setPassed(passed);
+      passed = JSON.stringify(eval(`${js + test}`)) === JSON.stringify(example.output);
+      if (!passed) {
+        modalText = `Oh No! Expected ${JSON.stringify(example.output)} but got ${JSON.stringify(eval(`${js + test}`))}`;
+        setShow(true);
+        break;
+      }
+    }
+
+    if (passed) { setPassed(true); }
     setShow(true);
   };
 
@@ -83,12 +92,11 @@ export default function AttemptPrompt() {
     alert('You have run out of time');
   };
 
-  let modalText;
-  if (testsPassed) {
-    modalText = <h1>Great Job! You Passed!</h1>;
-  } else {
-    modalText = <h1>Oh No! Review and Try Again Later</h1>;
-  }
+  // if (testsPassed) {
+  //   modalText = <h1>Great Job! You Passed!</h1>;
+  // } else {
+  //   modalText = <h1>Oh No! Review and Try Again</h1>;
+  // }
   return (
     <div className="PromptPage">
       <div className="PromptPageLeft">
@@ -134,7 +142,7 @@ export default function AttemptPrompt() {
             numberOfPieces={1000}
             gravity={2}
           />
-          {modalText}
+          <h1>{modalText}</h1>
         </div>
       </Modal>
     </div>
