@@ -13,7 +13,7 @@ import Prompt from './Prompt';
 
 let params;
 let name;
-let modalText = 'Great Job! You Passed!';
+let modalText;
 
 const buildText = (problem) => {
   params = problem.examples[0].input.split(', ');
@@ -21,8 +21,10 @@ const buildText = (problem) => {
 
   name = problem.name.split(' ', 2);
   name[0] = name[0].toLowerCase();
-  name[1] = name[1].charAt(0).toUpperCase() + name[1].slice(1);
-  name = name.join('').replace(/[^a-zA-Z0-9]/g, '_');
+  if (name[1]) {
+    name[1] = name[1].charAt(0).toUpperCase() + name[1].slice(1);
+  }
+  name = name.join('').replace(/[^a-zA-Z]/g, '');
 
   return (`function ${name}(${params.join(', ')}) {`
     + `\n // Your Code Here\n\n};\n\n${name}(/* input */);`);
@@ -75,15 +77,18 @@ export default function AttemptPrompt() {
       args = args.join(', ');
       const test = `${name}(${args});`;
 
-      passed = JSON.stringify(eval(`${js + test}`)) === JSON.stringify(example.output);
+      passed = JSON.stringify(eval(`${js + test}`)) === example.output;
       if (!passed) {
-        modalText = `Oh No! Expected ${JSON.stringify(example.output)} but got ${JSON.stringify(eval(`${js + test}`))}`;
+        modalText = `Oh No! Expected ${example.output} but got ${`${eval(`${js + test}`)}`}`;
         setShow(true);
         break;
       }
     }
 
-    if (passed) { setPassed(true); }
+    if (passed) {
+      modalText = 'Great Job! You Passed!';
+      setPassed(true);
+    }
     setShow(true);
   };
 
