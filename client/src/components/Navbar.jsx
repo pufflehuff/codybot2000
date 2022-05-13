@@ -133,9 +133,10 @@ function ResponsiveAppBar() {
                 SOLVE A PROBLEM
               </Button>
             </Link>
-            <Link to="add" state={{currentUserId: currentUserId}}>
+            <Link to={loggedInUser === 'Anonymous' ? '#' : 'add'} state={{currentUserId: currentUserId}}>
               <Button
                 key="add"
+                disabled={loggedInUser === 'Anonymous'}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
