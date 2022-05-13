@@ -183,15 +183,17 @@ export default function AddNewPrompt() {
               }}
             />
           </div>
-          <label htmlFor="promptOutputs">
-            <b>Output:&nbsp;</b>
-            <input
-              type="text"
-              onChange={(event) => {
-                setExOutput(event.target.value);
-              }}
-            />
-          </label>
+          <div className="NewOutput">
+            <label htmlFor="promptOutputs">
+              <b>Output:&nbsp;</b>
+              <input
+                type="text"
+                onChange={(event) => {
+                  setExOutput(event.target.value);
+                }}
+              />
+            </label>
+          </div>
         </label>
       </div>
       <div className="PromptRow">

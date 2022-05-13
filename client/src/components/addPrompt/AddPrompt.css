@@ -49,3 +49,9 @@ input[type=text], input[type=number], select, textarea {
 .PromptContainer > div > div {
   width: 100%;
 }
+
+.NewOutput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
