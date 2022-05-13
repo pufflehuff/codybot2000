@@ -51,6 +51,7 @@ img {
   background-color:rgba(0, 0, 0, 0);
   mask: repeat left center/var(--size) var(--star);
   display: flex;
+  max-height: var(--size);
 }
 
 /*  Firefox Styles For Star Rating Range  */
