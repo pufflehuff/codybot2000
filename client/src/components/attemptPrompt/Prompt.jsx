@@ -14,22 +14,17 @@ export default function Prompt({ problem }) {
   function handleSubmit() {
     setSubmitted(true);
 
-    console.log(problem);
-
     const newRating = problem.rating;
     newRating[rating] += 1;
 
-    axios.put(`/api/updateRating/${problem._id}`, newRating)
+    axios.put(`/api/updateRating/${problem._id}`, { rating: newRating })
       .catch((err) => console.log(err));
   }
 
   function handleReport() {
     setReported(true);
 
-    let newReportedCount = problem.reportedCount;
-    newReportedCount += 1;
-
-    axios.put(`/api/reportProblem/${problem._id}`, newReportedCount)
+    axios.put(`/api/reportProblem/${problem._id}`, { reportedCount: problem.reportedCount + 1 })
       .catch((err) => console.log(err));
   }
 
