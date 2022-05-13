@@ -13,7 +13,7 @@ import './components/attemptPrompt/Attempt.css';
 reactDom.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route exact path="/" element={<App />}>
         <Route path="" element={<List />} />
         <Route path="solve" element={<AttemptPrompt />} />
         <Route path="add" element={<AddNewPrompt />} />
