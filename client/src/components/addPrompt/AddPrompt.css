@@ -7,10 +7,6 @@
   color: #EAB464;
 }
 
-.SubmitPrompt {
-
-}
-
 label, textarea, input {
   display: block;
 }
@@ -34,5 +30,12 @@ textarea {
   margin-right: .5vw;
   background-color: #263238;
   color: #eab464;
-  border: .1em solid #A9CEF4;
+  /* border: .1em solid #A9CEF4; */
+}
+
+label > input[type=text], input[type=number], select, textarea {
+  background-color: #263238;
+  color: #eab464;
+  border-style: inset;
+  border-radius: .3rem;
 }
