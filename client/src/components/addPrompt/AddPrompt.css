@@ -24,7 +24,7 @@ label, textarea, input {
 textarea {
   resize:none;
   overflow: auto;
-  height: 65vh;
+  height: 40vh;
   width: 35vw;
   margin-left: .5vw;
   margin-right: .5vw;
