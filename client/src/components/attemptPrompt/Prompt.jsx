@@ -70,7 +70,7 @@ export default function Prompt({ problem }) {
         </ul>
       </div>
       {reported ? null
-        : <button type="button" onClick={() => handleReport()}>report problem</button>}
+        : <button type="button" className="ReportButton" onClick={() => handleReport()}>report problem</button>}
     </div>
   );
 }
