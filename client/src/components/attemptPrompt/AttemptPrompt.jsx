@@ -77,9 +77,9 @@ export default function AttemptPrompt() {
       args = args.join(', ');
       const test = `${name}(${args});`;
 
-      passed = JSON.stringify(eval(`${js + test}`)) === JSON.stringify(example.output);
+      passed = JSON.stringify(eval(`${js + test}`)) === example.output;
       if (!passed) {
-        modalText = `Oh No! Expected ${JSON.stringify(example.output)} but got ${`${eval(`${js + test}`)}`}`;
+        modalText = `Oh No! Expected ${example.output} but got ${`${eval(`${js + test}`)}`}`;
         setShow(true);
         break;
       }
